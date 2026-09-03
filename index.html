@@ -4,339 +4,550 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Rafia's Birthday Surprise 🎂</title>
+<title>For Rafia ♡</title>
+
+<!-- Cute fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+*{
+    box-sizing:border-box;
 }
 
-body {
-  font-family: Arial, sans-serif;
-  background: #08080f;
-  color: white;
-  min-height: 100vh;
-  overflow-x: hidden;
+html,body{
+    margin:0;
+    width:100%;
+    height:100%;
 }
 
-.screen {
-  display: none;
-  min-height: 100vh;
-  width: 100%;
-  padding: 25px;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  animation: screenIn 0.6s ease;
+body{
+    background:
+        radial-gradient(circle at 20% 20%,rgba(255,140,190,.12),transparent 30%),
+        radial-gradient(circle at 80% 80%,rgba(150,130,255,.12),transparent 30%),
+        linear-gradient(135deg,#090914,#111020 50%,#0b0a15);
+
+    color:#fff;
+
+    font-family:'Quicksand',sans-serif;
+
+    overflow:hidden;
 }
 
-.screen.active {
-  display: flex;
+/* soft background glow */
+
+body::before,
+body::after{
+    content:"";
+    position:fixed;
+    width:300px;
+    height:300px;
+    border-radius:50%;
+    filter:blur(100px);
+    opacity:.15;
+    pointer-events:none;
 }
 
-.question-card {
-  width: 100%;
-  max-width: 600px;
-  padding: 35px 25px;
-  border-radius: 25px;
-  background: rgba(255,255,255,0.06);
-  backdrop-filter: blur(12px);
-  box-shadow: 0 0 40px rgba(255,255,255,0.05);
+body::before{
+    background:#ff75ad;
+    top:-120px;
+    left:-100px;
 }
 
-.big-emoji {
-  font-size: 65px;
-  margin-bottom: 20px;
-  animation: float 3s ease-in-out infinite;
+body::after{
+    background:#8b7cff;
+    bottom:-120px;
+    right:-100px;
 }
 
-h1 {
-  font-size: 42px;
-  margin-bottom: 20px;
+/* screens */
+
+.screen{
+    min-height:100vh;
+    width:100%;
+    display:none;
+
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+
+    padding:25px;
+
+    animation:screenIn .7s ease;
 }
 
-h2 {
-  font-size: 28px;
-  line-height: 1.35;
-  margin-bottom: 18px;
+.screen.active{
+    display:flex;
 }
 
-p {
-  color: #d5d5d5;
-  font-size: 17px;
-  line-height: 1.6;
-  margin-bottom: 25px;
+.box{
+    width:100%;
+    max-width:720px;
+    position:relative;
+    z-index:2;
 }
 
-button {
-  border: none;
-  border-radius: 15px;
-  padding: 14px 20px;
-  margin: 7px;
-  font-size: 16px;
-  font-weight: bold;
-  cursor: pointer;
-  background: white;
-  color: #111;
-  transition: 0.25s;
+/* typography */
+
+h1,h2{
+    font-family:'Playfair Display',serif;
 }
 
-button:hover {
-  transform: scale(1.05);
+h1{
+    font-size:48px;
+    line-height:1.15;
+    margin:15px 0;
 }
 
-.options {
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
+h2{
+    font-size:30px;
+    line-height:1.3;
+    margin:15px 0;
 }
 
-.options button {
-  width: 100%;
+p{
+    font-size:17px;
+    line-height:1.8;
+    color:#e7e3ee;
 }
 
-.next-btn {
-  margin-top: 15px;
+/* glass card */
+
+.card{
+    background:rgba(255,255,255,.055);
+    border:1px solid rgba(255,255,255,.12);
+
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+
+    padding:30px;
+
+    border-radius:28px;
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.35),
+        inset 0 1px 0 rgba(255,255,255,.08);
 }
 
-textarea {
-  width: 100%;
-  min-height: 130px;
-  resize: vertical;
-  border: none;
-  outline: none;
-  border-radius: 15px;
-  padding: 15px;
-  font-size: 16px;
-  margin-bottom: 15px;
+/* intro moon */
+
+.moon{
+    font-size:75px;
+    display:block;
+    margin-bottom:15px;
+
+    filter:drop-shadow(0 0 20px rgba(255,255,255,.35));
+
+    animation:moonFloat 3s ease-in-out infinite;
 }
 
-.countdown {
-  font-size: 100px;
-  font-weight: bold;
-  animation: countdownPop 1s ease;
+/* buttons */
+
+button{
+    font-family:'Quicksand',sans-serif;
+    font-weight:700;
+
+    border:0;
+
+    padding:14px 24px;
+
+    margin:8px;
+
+    border-radius:18px;
+
+    background:linear-gradient(
+        135deg,
+        #fff,
+        #f4eefa
+    );
+
+    color:#17131d;
+
+    font-size:16px;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 8px 25px rgba(0,0,0,.25);
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease;
 }
 
-.birthday-title {
-  font-size: 48px;
-  animation: birthdayPop 1s ease;
+button:hover{
+    transform:translateY(-3px) scale(1.03);
+
+    box-shadow:
+        0 12px 30px rgba(0,0,0,.35);
 }
 
-.memory-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 15px;
-  margin-top: 20px;
+button:active{
+    transform:scale(.97);
 }
 
-.memory-card {
-  height: 180px;
-  border-radius: 18px;
-  background: rgba(255,255,255,0.08);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 45px;
-  animation: cardIn 0.7s ease;
+/* answer buttons */
+
+.answer{
+    display:block;
+    width:100%;
+
+    background:rgba(255,255,255,.055);
+
+    color:#fff;
+
+    border:1px solid rgba(255,255,255,.12);
+
+    text-align:left;
+
+    padding:16px 20px;
+
+    margin:10px 0;
+
+    border-radius:18px;
+
+    backdrop-filter:blur(10px);
 }
 
-.music-button {
-  font-size: 18px;
+.answer:hover{
+    background:rgba(255,255,255,.11);
+    border-color:rgba(255,170,205,.35);
 }
 
-.final-message {
-  text-align: left;
-  white-space: pre-line;
+/* textarea */
+
+textarea{
+    width:100%;
+    height:140px;
+
+    padding:18px;
+
+    border-radius:20px;
+
+    border:1px solid rgba(255,255,255,.12);
+
+    background:rgba(255,255,255,.05);
+
+    color:white;
+
+    font-family:'Quicksand',sans-serif;
+
+    font-size:16px;
+
+    outline:none;
+
+    resize:none;
+
+    backdrop-filter:blur(10px);
 }
 
-.heart {
-  position: fixed;
-  bottom: -50px;
-  font-size: 25px;
-  pointer-events: none;
-  animation: rise 5s linear forwards;
+textarea:focus{
+    border-color:rgba(255,170,205,.5);
 }
 
-.star {
-  position: fixed;
-  font-size: 18px;
-  pointer-events: none;
-  animation: twinkle 3s linear forwards;
+textarea::placeholder{
+    color:#aaa3b5;
 }
 
-.fun-buttons {
-  position: relative;
-  min-height: 180px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 15px;
+/* reaction */
+
+.reaction{
+    font-size:78px;
+
+    margin-bottom:10px;
+
+    filter:drop-shadow(0 0 18px rgba(255,255,255,.2));
+
+    animation:reactionPop .8s ease;
 }
 
-.yes-btn,
-.no-btn {
-  padding: 16px 28px;
-  border-radius: 15px;
-  font-size: 18px;
-  font-weight: bold;
+/* twist */
+
+.twist{
+    font-size:75px;
+
+    animation:twistPop .8s ease;
 }
 
-.no-btn {
-  position: relative;
-  transition: transform 0.35s ease;
+/* countdown */
+
+.count{
+    font-family:'Playfair Display',serif;
+
+    font-size:110px;
+
+    animation:countPop .8s ease;
+
+    text-shadow:
+        0 0 30px rgba(255,170,210,.4);
 }
 
-.big-yes {
-  font-size: 30px !important;
-  padding: 23px 60px !important;
-  animation: reactionPop 0.7s ease;
+/* birthday */
+
+.birthday h1{
+    font-size:55px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #fff,
+            #ffc4dd,
+            #d7ceff,
+            #fff
+        );
+
+    background-size:300%;
+
+    -webkit-background-clip:text;
+    background-clip:text;
+
+    color:transparent;
+
+    animation:
+        birthdayPop 1s ease,
+        gradientMove 5s linear infinite;
 }
 
-.press-message {
-  margin-top: 15px;
-  font-size: 20px;
-  font-weight: bold;
-  line-height: 1.7;
+.photo{
+    width:190px;
+    height:190px;
+
+    object-fit:cover;
+
+    border-radius:50%;
+
+    border:4px solid rgba(255,255,255,.8);
+
+    padding:5px;
+
+    background:rgba(255,255,255,.08);
+
+    box-shadow:
+        0 0 35px rgba(255,150,200,.2);
+
+    animation:photoAppear 1.2s ease;
 }
 
-.reaction-pop {
-  animation: reactionPop 0.7s ease;
+/* floating effects */
+
+.float{
+    position:fixed;
+
+    pointer-events:none;
+
+    z-index:1;
+
+    font-size:24px;
+
+    animation:floatUp 4s linear forwards;
 }
 
-@keyframes screenIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
+/* little decorative dots */
 
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.dot{
+    position:fixed;
+
+    width:4px;
+    height:4px;
+
+    background:white;
+
+    border-radius:50%;
+
+    opacity:.35;
+
+    animation:twinkle 2s ease-in-out infinite;
 }
 
-@keyframes float {
-  0%,100% {
-    transform: translateY(0);
-  }
+/* animations */
 
-  50% {
-    transform: translateY(-10px);
-  }
+@keyframes screenIn{
+
+    from{
+        opacity:0;
+        transform:translateY(25px) scale(.98);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+
 }
 
-@keyframes reactionPop {
-  0% {
-    transform: scale(0.3) rotate(-10deg);
-    opacity: 0;
-  }
+@keyframes moonFloat{
 
-  60% {
-    transform: scale(1.25) rotate(5deg);
-    opacity: 1;
-  }
+    0%,100%{
+        transform:translateY(0) rotate(-4deg);
+    }
 
-  100% {
-    transform: scale(1) rotate(0);
-  }
+    50%{
+        transform:translateY(-12px) rotate(4deg);
+    }
+
 }
 
-@keyframes countdownPop {
-  0% {
-    transform: scale(0.2);
-    opacity: 0;
-  }
+@keyframes reactionPop{
 
-  70% {
-    transform: scale(1.3);
-    opacity: 1;
-  }
+    0%{
+        opacity:0;
+        transform:scale(.2) rotate(-15deg);
+    }
 
-  100% {
-    transform: scale(1);
-  }
+    65%{
+        transform:scale(1.18) rotate(6deg);
+    }
+
+    100%{
+        opacity:1;
+        transform:scale(1) rotate(0);
+    }
+
 }
 
-@keyframes birthdayPop {
-  0% {
-    transform: scale(0.3);
-    opacity: 0;
-  }
+@keyframes twistPop{
 
-  70% {
-    transform: scale(1.15);
-    opacity: 1;
-  }
+    0%{
+        opacity:0;
+        transform:scale(.2) rotate(-20deg);
+    }
 
-  100% {
-    transform: scale(1);
-  }
+    70%{
+        transform:scale(1.2) rotate(8deg);
+    }
+
+    100%{
+        transform:scale(1);
+    }
+
 }
 
-@keyframes rise {
-  from {
-    transform: translateY(0);
-    opacity: 1;
-  }
+@keyframes countPop{
 
-  to {
-    transform: translateY(-110vh);
-    opacity: 0;
-  }
+    0%{
+        opacity:0;
+        transform:scale(2);
+    }
+
+    100%{
+        opacity:1;
+        transform:scale(1);
+    }
+
 }
 
-@keyframes twinkle {
-  from {
-    transform: scale(0);
-    opacity: 0;
-  }
+@keyframes birthdayPop{
 
-  30% {
-    opacity: 1;
-  }
+    0%{
+        opacity:0;
+        transform:scale(.3) rotate(-8deg);
+    }
 
-  to {
-    transform: scale(1.8);
-    opacity: 0;
-  }
+    70%{
+        transform:scale(1.12) rotate(3deg);
+    }
+
+    100%{
+        opacity:1;
+        transform:scale(1);
+    }
+
 }
 
-@keyframes cardIn {
-  from {
-    transform: translateY(30px);
-    opacity: 0;
-  }
+@keyframes photoAppear{
 
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
+    from{
+        opacity:0;
+        transform:scale(.3) rotate(-15deg);
+    }
+
+    to{
+        opacity:1;
+        transform:scale(1) rotate(0);
+    }
+
 }
 
-@media (max-width: 500px) {
+@keyframes floatUp{
 
-  h1 {
-    font-size: 34px;
-  }
+    from{
+        transform:
+            translateY(100vh)
+            rotate(0deg)
+            scale(.8);
 
-  h2 {
-    font-size: 24px;
-  }
+        opacity:1;
+    }
 
-  .birthday-title {
-    font-size: 38px;
-  }
+    to{
+        transform:
+            translateY(-120px)
+            rotate(360deg)
+            scale(1.2);
 
-  .question-card {
-    padding: 30px 18px;
-  }
+        opacity:0;
+    }
 
-  .memory-grid {
-    grid-template-columns: 1fr;
-  }
+}
+
+@keyframes twinkle{
+
+    0%,100%{
+        opacity:.15;
+        transform:scale(.7);
+    }
+
+    50%{
+        opacity:.8;
+        transform:scale(1.4);
+    }
+
+}
+
+@keyframes gradientMove{
+
+    from{
+        background-position:0%;
+    }
+
+    to{
+        background-position:300%;
+    }
+
+}
+
+/* mobile */
+
+@media(max-width:600px){
+
+    h1{
+        font-size:38px;
+    }
+
+    h2{
+        font-size:25px;
+    }
+
+    p{
+        font-size:16px;
+    }
+
+    .birthday h1{
+        font-size:40px;
+    }
+
+    .photo{
+        width:155px;
+        height:155px;
+    }
+
+    .card{
+        padding:22px;
+    }
+
 }
 
 </style>
@@ -344,880 +555,1028 @@ textarea {
 
 <body>
 
+<!-- INTRO -->
 
-<!-- START -->
-<section id="start" class="screen active">
+<section id="intro" class="screen active">
 
-  <div class="question-card">
+<div class="box card">
 
-    <div class="big-emoji">🌙</div>
+<span class="moon">🌙</span>
 
-    <h1>I made something for you.</h1>
+<h1>I made something for you.</h1>
 
-    <p>
-      But there's one rule...<br>
-      You have to go through the whole thing 👀
-    </p>
+<p>
+But there's one rule...<br>
+You have to go through the whole thing 👀
+</p>
 
-    <button onclick="startSurprise()">
-      Start the surprise →
-    </button>
+<button onclick="start()">
+Start the surprise →
+</button>
 
-  </div>
+</div>
 
 </section>
-
 
 
 <!-- QUESTIONS -->
-<section id="questionScreen" class="screen">
 
-  <div class="question-card">
+<section id="question" class="screen">
 
-    <div id="questionEmoji" class="big-emoji">❤️</div>
+<div class="box card">
 
-    <h2 id="questionText"></h2>
+<h2 id="q"></h2>
 
-    <div id="questionOptions" class="options"></div>
+<div id="answers"></div>
 
-    <div id="textAnswerArea"></div>
-
-    <div id="reactionArea"></div>
-
-  </div>
+</div>
 
 </section>
 
 
+<!-- REACTION -->
 
-<!-- Q10 FUN QUESTION -->
-<section id="funQuestion" class="screen">
+<section id="reactionScreen" class="screen">
 
-  <div class="question-card">
+<div class="box card">
 
-    <div class="big-emoji">👀</div>
+<div id="reactionEmoji" class="reaction"></div>
 
-    <h2>
-      Are you ready for your actual birthday surprise?
-    </h2>
+<h2 id="reactionText"></h2>
 
-    <p>
-      Be honest... I'm watching your answer. 😭
-    </p>
+<button onclick="nextQuestion()">
+Continue →
+</button>
 
-    <div class="fun-buttons" id="funButtons">
-
-      <button
-        class="yes-btn"
-        onclick="finalYes()">
-        YES ❤️
-      </button>
-
-      <button
-        class="no-btn"
-        id="noBtn"
-        onclick="moveNo()">
-        NO 😭
-      </button>
-
-    </div>
-
-    <div
-      id="pressMessage"
-      class="press-message">
-    </div>
-
-  </div>
+</div>
 
 </section>
 
 
+<!-- TWIST -->
 
-<!-- COUNTDOWN -->
-<section id="countdownScreen" class="screen">
+<section id="twist" class="screen">
 
-  <div>
+<div class="box card">
 
-    <div
-      id="countdownNumber"
-      class="countdown">
-      3
-    </div>
+<div class="twist">👀</div>
 
-  </div>
+<h2 id="twistText"></h2>
+
+<button onclick="continueTwist()">
+Wait... what? →
+</button>
+
+</div>
 
 </section>
 
+
+<!-- CRASH COUNTDOWN -->
+
+<section id="crashCount" class="screen">
+
+<div class="box">
+
+<div class="twist">💀</div>
+
+<div id="crashNumber" class="count">
+3
+</div>
+
+</div>
+
+</section>
+
+
+<!-- FAKE CRASH -->
+
+<section id="crash" class="screen">
+
+<div class="box card">
+
+<div class="twist">💥</div>
+
+<h1>SYSTEM CRASHED 💀</h1>
+
+<p>
+Well... there goes your birthday present. 😭
+</p>
+
+<h2>Wait...</h2>
+
+<p>
+Did you actually believe that? 👀
+</p>
+
+<button onclick="showPresent()">
+Continue → 🎁
+</button>
+
+</div>
+
+</section>
+
+
+<!-- PRESENT -->
+
+<section id="present" class="screen">
+
+<div class="box card">
+
+<div class="reaction" id="presentEmoji">
+🎁
+</div>
+
+<h2 id="presentText">
+Are you ready for your present?
+</h2>
+
+<button onclick="presentNext()">
+YES ❤️
+</button>
+
+</div>
+
+</section>
+
+
+<!-- FINAL COUNTDOWN -->
+
+<section id="finalCount" class="screen">
+
+<div class="box">
+
+<div id="finalNumber" class="count">
+3
+</div>
+
+</div>
+
+</section>
 
 
 <!-- BIRTHDAY -->
-<section id="birthdayScreen" class="screen">
 
-  <div class="question-card">
+<section id="birthday" class="screen birthday">
 
-    <div class="big-emoji">🎉</div>
+<div class="box card">
 
-    <h1 class="birthday-title">
-      HAPPY BIRTHDAY RAFIA 🎉
-    </h1>
+<img
+src="rafia.jpg"
+class="photo"
+alt="Birthday photo"
+>
 
-    <p>
-      This whole thing was made specially for you. ❤️
-    </p>
+<p>Today is your day ✨</p>
 
-    <button onclick="showMemories()">
-      Continue → 
-    </button>
+<h1>
+HAPPY BIRTHDAY RAFIA 🎉
+</h1>
 
-  </div>
+<p>
+You finally made it through. 😭❤️
+</p>
+
+<p>
+And yes... this time the gift is real. 😂🎁
+</p>
+
+<button onclick="memories()">
+A few memories →
+</button>
+
+</div>
 
 </section>
-
 
 
 <!-- MEMORIES -->
-<section id="memoriesScreen" class="screen">
 
-  <div class="question-card">
+<section id="memories" class="screen">
 
-    <div class="big-emoji">📸</div>
+<div class="box card">
 
-    <h2>A few memories...</h2>
+<div class="reaction">
+📸
+</div>
 
-    <p>
-      A few little placeholders for now. ❤️
-    </p>
+<h1>A few memories...</h1>
 
-    <div class="memory-grid">
+<p>
+Some moments are too good to forget. ❤️
+</p>
 
-      <div class="memory-card">📷</div>
+<p>
+More memories coming soon...
+</p>
 
-      <div class="memory-card">🌙</div>
+<button onclick="music()">
+Continue →
+</button>
 
-      <div class="memory-card">😂</div>
-
-      <div class="memory-card">❤️</div>
-
-    </div>
-
-    <button onclick="showMusic()">
-      Continue →
-    </button>
-
-  </div>
+</div>
 
 </section>
-
 
 
 <!-- MUSIC -->
-<section id="musicScreen" class="screen">
 
-  <div class="question-card">
+<section id="music" class="screen">
 
-    <div class="big-emoji">🎵</div>
+<div class="box card">
 
-    <h2>Play something for you</h2>
+<div class="reaction">
+🎵
+</div>
 
-    <p>
-      A little soundtrack for the moment. 🎧
-    </p>
+<h1>A little something for you</h1>
 
-    <button
-      class="music-button"
-      onclick="playMusic()">
-      🎵 Play something for you
-    </button>
+<p>
+Press the button when you're ready.
+</p>
 
-    <br>
+<button onclick="playMusic()">
+🎵 Play something for you
+</button>
 
-    <button onclick="showFinal()">
-      Skip → 
-    </button>
+<button onclick="finalMessage()">
+Skip →
+</button>
 
-  </div>
+</div>
 
 </section>
 
 
+<!-- FINAL MESSAGE -->
 
-<!-- FINAL -->
-<section id="finalScreen" class="screen">
+<section id="final" class="screen">
 
-  <div class="question-card">
+<div class="box card">
 
-    <div class="big-emoji">❤️</div>
+<h2>Rafia,</h2>
 
-    <div class="final-message">
+<p>
+Honestly, I still don't know how someone who is this far away
+managed to become such an important part of my life. 😭
+</p>
 
-Rafia,
+<p>
+You've somehow managed to make random days better,
+make boring conversations interesting,
+tolerate my nonsense,
+and somehow still haven't blocked me...
+which honestly deserves an award. 💀
+</p>
 
-Honestly, I still don't know how someone who is this far away managed to become such an important part of my life. 😭
-
-You've somehow managed to make random days better, make boring conversations interesting, tolerate my nonsense, and somehow still haven't blocked me... which honestly deserves an award. 💀
-
+<p>
 But jokes aside, I'm genuinely really glad I met you.
+</p>
 
-I hope this new year of your life brings you happiness, good memories, peace, success, and all the little things you've been wishing for.
+<p>
+I hope this new year of your life brings you happiness,
+good memories, peace, success,
+and all the little things you've been wishing for.
+</p>
 
-Keep smiling, keep being yourself, and please don't become too mature because I still need someone to annoy. 😭
+<p>
+Keep smiling, keep being yourself,
+and please don't become too mature
+because I still need someone to annoy. 😭
+</p>
 
+<h2>
 Happy Birthday, Rafia. ❤️
+</h2>
 
+<p>
 I hope you liked this little surprise.
+</p>
 
-And remember...
-
+<h2>
 You were worth all the effort. 🫶
+</h2>
 
+<p>
 — From someone who is probably never going to stop annoying you 😂
+</p>
 
-    </div>
+<br>
 
-    <br>
+<p>
+Made specially for Rafia ♡
+</p>
 
-    <h3>
-      Made specially for Rafia ♡
-    </h3>
+<p>
+September 2026
+</p>
 
-    <p>
-      September 2026
-    </p>
+<button onclick="location.reload()">
+Replay the surprise ↻
+</button>
 
-    <button onclick="restart()">
-      Replay the surprise ↻
-    </button>
-
-  </div>
+</div>
 
 </section>
-
 
 
 <script>
 
+/* QUESTIONS */
 
 const questions = [
 
-  {
-    emoji: "❤️",
+{
+q:"Do you know how special you actually are to me?",
 
-    text: "Do you know how special you actually are to me?",
+a:[
+[
+"Obviously 😌",
+"OHH, look who's confident today. 😎❤️",
+"😎"
+],
 
-    options: [
-      ["Obviously 😌", "OHH, look who's confident today. 😎❤️", "😎"],
-      ["Maybe? 👀", "Hmm... still unsure? I might have to convince you. 👀", "👀"],
-      ["I don't think so...", "Then clearly I haven't told you enough yet. ❤️", "🥺"]
-    ]
-  },
+[
+"Maybe? 👀",
+"Hmm... still unsure? I might have to convince you. 👀",
+"👀"
+],
 
+[
+"I don't think so...",
+"Then clearly I haven't told you enough yet. ❤️",
+"🥺"
+]
+]
+},
 
-  {
-    emoji: "💬",
+{
+q:"What's one thing about our friendship that you secretly love the most?",
 
-    text: "What's one thing about our friendship that you secretly love the most?",
+a:[
+[
+"Our random conversations",
+"Those random conversations really are something else. 😂",
+"💬"
+],
 
-    options: [
-      ["Our random conversations", "Those random conversations really are something else. 😂", "💬"],
-      ["Our stupid jokes 😭", "Our humor is actually questionable. 😭😂", "😂"],
-      ["The fact that we can talk about anything", "Okay... that's actually really sweet. 🫶", "🫶"],
-      ["Honestly... everything", "Okayyy, don't make me emotional now. 😭❤️", "🥹"]
-    ]
-  },
+[
+"Our stupid jokes 😭",
+"Our humor is actually questionable. 😭😂",
+"😂"
+],
 
+[
+"The fact that we can talk about anything",
+"Okay... that's actually really sweet. 🫶",
+"🫶"
+],
 
-  {
-    emoji: "✨",
+[
+"Honestly... everything",
+"Okayyy, don't make me emotional now. 😭❤️",
+"🥹"
+]
+]
+},
 
-    text: "Do you realize how many random days you've made better just by being there?",
+{
+q:"Do you realize how many random days you've made better just by being there?",
 
-    options: [
-      ["Yes 😌", "Look at you taking credit already. 😭😂", "😌"],
-      ["Maybe", "Maybe? I'll accept that... for now. 👀", "🤨"],
-      ["No way 😭", "YES WAY. Don't argue with me on this one. 😭❤️", "😤"]
-    ]
-  },
+a:[
+[
+"Yes 😌",
+"Look at you taking credit already. 😭😂",
+"😌"
+],
 
+[
+"Maybe",
+"Maybe? I'll accept that... for now. 👀",
+"🤨"
+],
 
-  {
-    emoji: "🌙",
+[
+"No way 😭",
+"YES WAY. Don't argue with me on this one. 😭❤️",
+"😤"
+]
+]
+},
 
-    text: "If distance didn't exist for one day, what would we do first?",
+{
+q:"If distance didn't exist for one day, what would we do first?",
 
-    options: [
-      ["Go somewhere random", "Of course we'd have absolutely no plan. 😂", "🗺️"],
-      ["Talk for hours", "And somehow we'd still have more to talk about. 😭", "💬"],
-      ["Take a million pictures 📸", "A million? You'd probably make it two million. 😂📸", "📸"],
-      ["Cause absolute chaos 💀", "I KNEW you'd choose this one. 💀😂", "💀"]
-    ]
-  },
+a:[
+[
+"Go somewhere random",
+"Of course we'd have absolutely no plan. 😂",
+"🗺️"
+],
 
+[
+"Talk for hours",
+"And somehow we'd still have more to talk about. 😭",
+"💬"
+],
 
-  {
-    emoji: "😂",
+[
+"Take a million pictures 📸",
+"A million? You'd probably make it two million. 😂📸",
+"📸"
+],
 
-    text: "Who is more likely to start a completely unnecessary argument?",
+[
+"Cause absolute chaos 💀",
+"I KNEW you'd choose this one. 💀😂",
+"💀"
+]
+]
+},
 
-    options: [
-      ["Me 😭", "At least you're honest. I'll give you that. 😂", "👏"],
-      ["You 💀", "EXCUSE ME?? 😭 You really clicked that with confidence?", "😤"],
-      ["Both of us", "Finally... some honesty. 💀😂", "🤝"],
-      ["Depends on the day...", "Smart answer. You're learning how to survive us. 😭", "🧠"]
-    ]
-  },
+{
+q:"Who is more likely to start a completely unnecessary argument?",
 
+a:[
+[
+"Me 😭",
+"At least you're honest. I'll give you that. 😂",
+"👏"
+],
 
-  {
-    emoji: "📝",
+[
+"You 💀",
+"EXCUSE ME?? 😭 You really clicked that with confidence?",
+"😤"
+],
 
-    text: "What's one memory or conversation between us that you'd never want to forget?",
+[
+"Both of us",
+"Finally... some honesty. 💀😂",
+"🤝"
+],
 
-    textBox: true,
+[
+"Depends on the day...",
+"Smart answer. You're learning how to survive us. 😭",
+"🧠"
+]
+]
+},
 
-    placeholder: "Write your answer here...",
+{
+q:"What's one memory or conversation between us that you'd never want to forget?",
 
-    response: "Okay... that one is getting saved in the imaginary memory vault. ❤️",
+text:true
+},
 
-    reaction: "🔐"
-  },
+{
+q:"Do you know that I'm genuinely glad I met you?",
 
+a:[
+[
+"Yes ❤️",
+"Good. Because I really mean it. ❤️",
+"❤️"
+],
 
-  {
-    emoji: "❤️",
+[
+"Now I do",
+"Then mission accomplished. 🫶",
+"✨"
+],
 
-    text: "Do you know that I'm genuinely glad I met you?",
+[
+"You better be 😭",
+"Trust me, I am. 😭",
+"😤"
+]
+]
+},
 
-    options: [
-      ["Yes ❤️", "Good. Because I really mean it. ❤️", "❤️"],
-      ["Now I do", "Then mission accomplished. 🫶", "✨"],
-      ["You better be 😭", "Trust me, I am. 😭❤️", "😤❤️"]
-    ]
-  },
+{
+q:"If we could meet right now, where would we go?",
 
+a:[
+[
+"Somewhere peaceful 🌙",
+"Honestly... that sounds kinda perfect. 🌙✨",
+"🌙"
+],
 
-  {
-    emoji: "🌙",
+[
+"Somewhere completely random 😂",
+"No destination. Just vibes. 😂",
+"🚗"
+],
 
-    text: "If we could meet right now, where would we go?",
+[
+"Food first. Obviously.",
+"FINALLY, someone with priorities. 😂🍕",
+"🍕"
+],
 
-    options: [
-      ["Somewhere peaceful 🌙", "Honestly... that sounds kinda perfect. 🌙✨", "🌙"],
-      ["Somewhere completely random 😂", "No destination. Just vibes. 😂", "🚗"],
-      ["Food first. Obviously.", "FINALLY, someone with priorities. 😂🍕", "🍕"],
-      ["Wherever, as long as we're together", "Okay... you didn't have to make that this cute. 🥹❤️", "🥹"]
-    ]
-  },
+[
+"Wherever, as long as we're together",
+"Okay... you didn't have to make that this cute. 🥹❤️",
+"🥹"
+]
+]
+},
 
+{
+q:"What's one thing you want this new year of your life to bring you?",
 
-  {
-    emoji: "🌟",
-
-    text: "What's one thing you want this new year of your life to bring you?",
-
-    textBox: true,
-
-    placeholder: "Make a wish...",
-
-    response: "Wish saved. Now let's hope this year is extra kind to you. ✨❤️",
-
-    reaction: "🌟"
-  }
+text:true
+}
 
 ];
 
 
-
-let currentQuestion = 0;
-
-
-
-function hideAll() {
-
-  document
-    .querySelectorAll(".screen")
-    .forEach(screen => {
-      screen.classList.remove("active");
-    });
-
-}
+let current=0;
+let selectedReaction="";
+let presentStep=0;
 
 
+/* SCREEN CONTROL */
 
-function startSurprise() {
+function hideAll(){
 
-  currentQuestion = 0;
-
-  showQuestion();
+document
+.querySelectorAll(".screen")
+.forEach(screen=>{
+    screen.classList.remove("active");
+});
 
 }
 
 
+function show(id){
 
-function showQuestion() {
+hideAll();
 
-  hideAll();
-
-  const screen =
-    document.getElementById("questionScreen");
-
-  screen.classList.add("active");
-
-  const q = questions[currentQuestion];
-
-  document.getElementById("questionEmoji").textContent =
-    q.emoji;
-
-  document.getElementById("questionText").textContent =
-    q.text;
-
-  const options =
-    document.getElementById("questionOptions");
-
-  const textArea =
-    document.getElementById("textAnswerArea");
-
-  const reaction =
-    document.getElementById("reactionArea");
-
-  options.innerHTML = "";
-  textArea.innerHTML = "";
-  reaction.innerHTML = "";
-
-
-  if (q.textBox) {
-
-    textArea.innerHTML = `
-
-      <textarea
-        id="answerInput"
-        placeholder="${q.placeholder}">
-      </textarea>
-
-      <button onclick="answerTextQuestion()">
-        ${currentQuestion === 5
-          ? "Keep this memory →"
-          : "Save my wish ✨"}
-      </button>
-
-    `;
-
-  }
-
-  else {
-
-    q.options.forEach(option => {
-
-      const button =
-        document.createElement("button");
-
-      button.textContent = option[0];
-
-      button.onclick = function() {
-
-        showReaction(
-          option[1],
-          option[2]
-        );
-
-      };
-
-      options.appendChild(button);
-
-    });
-
-  }
+document
+.getElementById(id)
+.classList.add("active");
 
 }
 
 
+/* START */
 
-function showReaction(text, emoji) {
+function start(){
 
-  const options =
-    document.getElementById("questionOptions");
+createStars();
 
-  options.innerHTML = "";
-
-  const reaction =
-    document.getElementById("reactionArea");
-
-  reaction.innerHTML = `
-
-    <div
-      class="big-emoji reaction-pop">
-      ${emoji}
-    </div>
-
-    <p>
-      ${text}
-    </p>
-
-    <button onclick="nextQuestion()">
-      Next →
-    </button>
-
-  `;
+showQuestion();
 
 }
 
 
+/* QUESTION */
 
-function answerTextQuestion() {
+function showQuestion(){
 
-  const input =
-    document.getElementById("answerInput");
+let data=questions[current];
 
-  const answer =
-    input.value.trim();
+show("question");
 
-  if (!answer) {
+document.getElementById("q").innerText=data.q;
 
-    input.placeholder =
-      "You have to write something first 😭";
+let box=document.getElementById("answers");
 
-    input.focus();
-
-    return;
-
-  }
-
-  const q = questions[currentQuestion];
-
-  showReaction(
-    q.response,
-    q.reaction
-  );
-
-}
+box.innerHTML="";
 
 
+/* TEXT QUESTIONS */
 
-function nextQuestion() {
+if(data.text){
 
-  currentQuestion++;
+let area=document.createElement("textarea");
 
-  if (currentQuestion < questions.length) {
+area.placeholder=
+current===5
+?
+"Write your answer here..."
+:
+"Make a wish...";
 
-    showQuestion();
-
-  }
-
-  else {
-
-    showFunQuestion();
-
-  }
-
-}
+box.appendChild(area);
 
 
+let btn=document.createElement("button");
 
-function showFunQuestion() {
-
-  hideAll();
-
-  document
-    .getElementById("funQuestion")
-    .classList.add("active");
-
-}
+btn.innerText=
+current===5
+?
+"Keep this memory →"
+:
+"Save my wish ✨";
 
 
+btn.onclick=()=>{
 
-let noClicks = 0;
+selectedReaction=
+current===5
+?
+"Okay... that one is getting saved in the imaginary memory vault. ❤️"
+:
+"Wish saved. Now let's hope this year is extra kind to you. ✨❤️";
 
+showReactionScreen(
+current===5
+?
+"🔐"
+:
+"🌟"
+);
 
+};
 
-function moveNo() {
-
-  const noBtn =
-    document.getElementById("noBtn");
-
-  const message =
-    document.getElementById("pressMessage");
-
-  noClicks++;
-
-
-  if (noClicks === 1) {
-
-    noBtn.style.transform =
-      "translateX(100px)";
-
-    message.textContent =
-      "Nice try 😂";
-
-  }
-
-
-  else if (noClicks === 2) {
-
-    noBtn.style.transform =
-      "translateX(-110px)";
-
-    message.textContent =
-      "You really tried again?! 😭";
-
-  }
-
-
-  else if (noClicks === 3) {
-
-    noBtn.style.transform =
-      "translateY(80px)";
-
-    message.textContent =
-      "Okay... ONE LAST TIME 💀";
-
-  }
-
-
-  else {
-
-    noBtn.remove();
-
-    const yesBtn =
-      document.querySelector(".yes-btn");
-
-    yesBtn.classList.add("big-yes");
-
-    message.innerHTML =
-      "👉 Press this, press this! 👈<br>" +
-      "😭 COME ON, PRESS IT! ❤️";
-
-  }
-
-
-  message.classList.remove("reaction-pop");
-
-  void message.offsetWidth;
-
-  message.classList.add("reaction-pop");
+box.appendChild(btn);
 
 }
 
 
+/* MULTIPLE CHOICE */
 
-function finalYes() {
+else{
 
-  startCountdown();
+data.a.forEach(option=>{
+
+let btn=document.createElement("button");
+
+btn.className="answer";
+
+btn.innerText=option[0];
+
+btn.onclick=()=>{
+
+selectedReaction=option[1];
+
+showReactionScreen(option[2]);
+
+};
+
+box.appendChild(btn);
+
+});
+
+}
 
 }
 
 
+/* REACTION */
 
-function startCountdown() {
+function showReactionScreen(emoji){
 
-  hideAll();
+show("reactionScreen");
 
-  const screen =
-    document.getElementById("countdownScreen");
+document.getElementById("reactionEmoji").innerText=emoji;
 
-  screen.classList.add("active");
+document.getElementById("reactionText").innerText=selectedReaction;
 
-  const number =
-    document.getElementById("countdownNumber");
-
-  let count = 3;
-
-  number.textContent = count;
-
-  const timer =
-    setInterval(() => {
-
-      count--;
-
-      if (count > 0) {
-
-        number.classList.remove("reaction-pop");
-
-        void number.offsetWidth;
-
-        number.classList.add("reaction-pop");
-
-        number.textContent = count;
-
-      }
-
-      else {
-
-        clearInterval(timer);
-
-        showBirthday();
-
-      }
-
-    }, 1000);
+createEffects(emoji);
 
 }
 
 
+/* NEXT */
 
-function showBirthday() {
+function nextQuestion(){
 
-  hideAll();
+current++;
 
-  document
-    .getElementById("birthdayScreen")
-    .classList.add("active");
+if(current===3){
 
-  createHearts();
+showTwist(
+"Wait... you're actually taking this seriously? 👀"
+);
 
-  createStars();
-
-}
-
-
-
-function showMemories() {
-
-  hideAll();
-
-  document
-    .getElementById("memoriesScreen")
-    .classList.add("active");
+return;
 
 }
 
 
+if(current===6){
 
-function showMusic() {
+showTwist(
+"Okay... we're getting closer to the actual surprise. 😭"
+);
 
-  hideAll();
-
-  document
-    .getElementById("musicScreen")
-    .classList.add("active");
-
-}
-
-
-
-function playMusic() {
-
-  alert(
-    "Music can be added here later with a properly licensed track. 🎵"
-  );
+return;
 
 }
 
 
+if(current>=questions.length){
 
-function showFinal() {
+startCrash();
 
-  hideAll();
-
-  document
-    .getElementById("finalScreen")
-    .classList.add("active");
-
-  createHearts();
+return;
 
 }
 
 
-
-function createHearts() {
-
-  for (let i = 0; i < 18; i++) {
-
-    setTimeout(() => {
-
-      const heart =
-        document.createElement("div");
-
-      heart.className = "heart";
-
-      heart.textContent =
-        ["❤️","💖","💕","🫶"][Math.floor(
-          Math.random() * 4
-        )];
-
-      heart.style.left =
-        Math.random() * 100 + "vw";
-
-      heart.style.animationDuration =
-        (3 + Math.random() * 3) + "s";
-
-      document.body.appendChild(heart);
-
-      setTimeout(() => {
-        heart.remove();
-      }, 6000);
-
-    }, i * 180);
-
-  }
+showQuestion();
 
 }
 
 
+/* TWIST */
 
-function createStars() {
+function showTwist(text){
 
-  for (let i = 0; i < 25; i++) {
+document.getElementById("twistText").innerText=text;
 
-    setTimeout(() => {
-
-      const star =
-        document.createElement("div");
-
-      star.className = "star";
-
-      star.textContent =
-        ["✨","⭐","🌟"][Math.floor(
-          Math.random() * 3
-        )];
-
-      star.style.left =
-        Math.random() * 100 + "vw";
-
-      star.style.top =
-        Math.random() * 100 + "vh";
-
-      document.body.appendChild(star);
-
-      setTimeout(() => {
-        star.remove();
-      }, 3000);
-
-    }, i * 100);
-
-  }
+show("twist");
 
 }
 
 
+function continueTwist(){
 
-function restart() {
-
-  noClicks = 0;
-
-  const oldNo =
-    document.getElementById("noBtn");
-
-  if (!oldNo) {
-
-    location.reload();
-
-    return;
-
-  }
-
-  oldNo.style.transform = "none";
-
-  const message =
-    document.getElementById("pressMessage");
-
-  message.innerHTML = "";
-
-  location.reload();
+showQuestion();
 
 }
 
 
+/* FAKE CRASH */
+
+function startCrash(){
+
+show("crashCount");
+
+let n=3;
+
+document.getElementById("crashNumber").innerText=n;
+
+let timer=setInterval(()=>{
+
+n--;
+
+if(n>0){
+
+document.getElementById("crashNumber").innerText=n;
+
+}
+
+else{
+
+clearInterval(timer);
+
+show("crash");
+
+createEffects("💥");
+
+}
+
+},900);
+
+}
+
+
+/* PRESENT */
+
+function showPresent(){
+
+presentStep=0;
+
+show("present");
+
+}
+
+
+function presentNext(){
+
+presentStep++;
+
+
+if(presentStep===1){
+
+document.getElementById("presentText").innerText=
+"Really? 👀";
+
+}
+
+else if(presentStep===2){
+
+document.getElementById("presentText").innerText=
+"Are you sure? 😭";
+
+}
+
+else if(presentStep===3){
+
+document.getElementById("presentText").innerText=
+"Okay... let's continue. 🎁";
+
+}
+
+else{
+
+startFinalCountdown();
+
+}
+
+}
+
+
+/* FINAL COUNTDOWN */
+
+function startFinalCountdown(){
+
+show("finalCount");
+
+let n=3;
+
+document.getElementById("finalNumber").innerText=n;
+
+let timer=setInterval(()=>{
+
+n--;
+
+if(n>0){
+
+document.getElementById("finalNumber").innerText=n;
+
+}
+
+else{
+
+clearInterval(timer);
+
+showBirthday();
+
+createBirthdayEffects();
+
+}
+
+},900);
+
+}
+
+
+/* BIRTHDAY */
+
+function showBirthday(){
+
+show("birthday");
+
+}
+
+
+/* MEMORIES */
+
+function memories(){
+
+show("memories");
+
+createEffects("💖");
+
+}
+
+
+/* MUSIC */
+
+function music(){
+
+show("music");
+
+}
+
+
+function playMusic(){
+
+alert(
+"Add your royalty-free music file as music.mp3 to the repository, then connect it here."
+);
+
+finalMessage();
+
+}
+
+
+/* FINAL */
+
+function finalMessage(){
+
+show("final");
+
+createEffects("❤️");
+
+}
+
+
+/* FLOATING EFFECTS */
+
+function createEffects(emoji){
+
+for(let i=0;i<14;i++){
+
+let e=document.createElement("div");
+
+e.className="float";
+
+e.innerText=emoji;
+
+e.style.left=
+Math.random()*100+"vw";
+
+e.style.animationDuration=
+(2.5+Math.random()*3)+"s";
+
+e.style.fontSize=
+(18+Math.random()*18)+"px";
+
+document.body.appendChild(e);
+
+setTimeout(()=>{
+    e.remove();
+},5500);
+
+}
+
+}
+
+
+/* BIRTHDAY EXPLOSION */
+
+function createBirthdayEffects(){
+
+let emojis=[
+"🎉",
+"❤️",
+"💖",
+"💕",
+"🫶",
+"✨",
+"🌙",
+"⭐",
+"🌟"
+];
+
+for(let i=0;i<40;i++){
+
+let e=document.createElement("div");
+
+e.className="float";
+
+e.innerText=
+emojis[
+Math.floor(
+Math.random()*emojis.length
+)
+];
+
+e.style.left=
+Math.random()*100+"vw";
+
+e.style.animationDuration=
+(2+Math.random()*4)+"s";
+
+e.style.fontSize=
+(20+Math.random()*20)+"px";
+
+document.body.appendChild(e);
+
+setTimeout(()=>{
+    e.remove();
+},6500);
+
+}
+
+}
+
+
+/* BACKGROUND STARS */
+
+function createStars(){
+
+for(let i=0;i<30;i++){
+
+let star=document.createElement("div");
+
+star.className="dot";
+
+star.style.left=
+Math.random()*100+"vw";
+
+star.style.top=
+Math.random()*100+"vh";
+
+star.style.animationDelay=
+Math.random()*2+"s";
+
+document.body.appendChild(star);
+
+}
+
+}
 
 </script>
 
 </body>
-</html>
+  </html>

@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>For Rafia ❤️</title>
+<title>Rafia's Birthday Surprise 🎂</title>
 
 <style>
 
@@ -15,229 +15,196 @@
 }
 
 body {
-  min-height: 100vh;
-  background: #080811;
-  color: white;
   font-family: Arial, sans-serif;
-  overflow: hidden;
+  background: #08080f;
+  color: white;
+  min-height: 100vh;
+  overflow-x: hidden;
 }
 
 .screen {
+  display: none;
   min-height: 100vh;
   width: 100%;
-  max-width: 520px;
-  margin: auto;
-  padding: 30px 22px;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  padding: 25px;
   align-items: center;
-
+  justify-content: center;
   text-align: center;
-
-  animation: screenIn 0.7s ease;
+  animation: screenIn 0.6s ease;
 }
 
-.hidden {
-  display: none !important;
+.screen.active {
+  display: flex;
 }
 
-.moon {
+.question-card {
+  width: 100%;
+  max-width: 600px;
+  padding: 35px 25px;
+  border-radius: 25px;
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 0 40px rgba(255,255,255,0.05);
+}
+
+.big-emoji {
   font-size: 65px;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
   animation: float 3s ease-in-out infinite;
 }
 
 h1 {
-  font-size: 31px;
-  line-height: 1.3;
+  font-size: 42px;
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-size: 28px;
+  line-height: 1.35;
   margin-bottom: 18px;
 }
 
 p {
-  color: #c8c8d8;
+  color: #d5d5d5;
   font-size: 17px;
   line-height: 1.6;
   margin-bottom: 25px;
 }
 
-.pink {
-  color: #ff91b6;
-}
-
 button {
-  width: 100%;
-  max-width: 360px;
-
-  padding: 15px 20px;
-  margin: 6px 0;
-
   border: none;
-  border-radius: 30px;
-
-  color: white;
-  font-size: 15px;
+  border-radius: 15px;
+  padding: 14px 20px;
+  margin: 7px;
+  font-size: 16px;
   font-weight: bold;
-
-  background: linear-gradient(135deg, #ff4f81, #9b5cff);
-
   cursor: pointer;
-
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
-button:active {
-  transform: scale(0.94);
+  background: white;
+  color: #111;
+  transition: 0.25s;
 }
 
 button:hover {
-  box-shadow: 0 8px 30px rgba(255, 100, 160, 0.25);
+  transform: scale(1.05);
 }
 
-.answer {
-  background: #181827;
-  border: 1px solid #34344a;
+.options {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
 }
 
-.answer:hover {
-  background: #23233a;
+.options button {
+  width: 100%;
 }
 
-.question {
-  font-size: 27px;
-  margin-bottom: 25px;
-}
-
-.response {
-  margin-top: 22px;
-  color: #ffabc6;
-  font-size: 18px;
-  line-height: 1.5;
-  animation: responseIn 0.5s ease;
-}
-
-.reaction {
-  font-size: 55px;
-  margin-bottom: 10px;
-  display: inline-block;
-}
-
-.reactionText {
-  color: #ffabc6;
-  font-size: 18px;
-  line-height: 1.5;
-}
-
-.nextButton {
-  margin-top: 18px;
+.next-btn {
+  margin-top: 15px;
 }
 
 textarea {
   width: 100%;
-  max-width: 360px;
-  height: 120px;
-
-  margin: 10px 0 15px;
-
+  min-height: 130px;
+  resize: vertical;
+  border: none;
+  outline: none;
+  border-radius: 15px;
   padding: 15px;
-
-  border-radius: 18px;
-  border: 1px solid #36364d;
-
-  background: #151522;
-  color: white;
-
-  font-size: 15px;
-  resize: none;
-}
-
-textarea::placeholder {
-  color: #77778b;
-}
-
-.counter {
-  position: absolute;
-  top: 25px;
-  color: #77778b;
-  font-size: 14px;
+  font-size: 16px;
+  margin-bottom: 15px;
 }
 
 .countdown {
-  font-size: 80px;
+  font-size: 100px;
+  font-weight: bold;
   animation: countdownPop 1s ease;
 }
 
-.birthday {
-  font-size: 38px;
-  color: #ff91b6;
+.birthday-title {
+  font-size: 48px;
   animation: birthdayPop 1s ease;
+}
+
+.memory-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.memory-card {
+  height: 180px;
+  border-radius: 18px;
+  background: rgba(255,255,255,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 45px;
+  animation: cardIn 0.7s ease;
+}
+
+.music-button {
+  font-size: 18px;
+}
+
+.final-message {
+  text-align: left;
+  white-space: pre-line;
 }
 
 .heart {
   position: fixed;
-  bottom: -40px;
-  font-size: 20px;
-  animation: rise 5s linear forwards;
+  bottom: -50px;
+  font-size: 25px;
   pointer-events: none;
-  z-index: 20;
+  animation: rise 5s linear forwards;
 }
 
 .star {
   position: fixed;
-  color: white;
   font-size: 18px;
-  animation: twinkle 2s infinite alternate;
   pointer-events: none;
-  z-index: 1;
+  animation: twinkle 3s linear forwards;
 }
 
-.memory {
-  width: 100%;
-  max-width: 350px;
-
-  padding: 20px;
-
-  border-radius: 25px;
-
-  background: #151522;
-  border: 1px solid #303044;
-
-  animation: cardIn 0.8s ease;
-}
-
-.memory-placeholder {
-  height: 230px;
-
-  border-radius: 18px;
-
+.fun-buttons {
+  position: relative;
+  min-height: 180px;
   display: flex;
   justify-content: center;
   align-items: center;
-
-  background: #222235;
-
-  color: #77778b;
-  margin-bottom: 15px;
+  gap: 15px;
 }
 
-.final-message {
-  max-height: 70vh;
-  overflow-y: auto;
-  text-align: left;
-  padding: 5px;
+.yes-btn,
+.no-btn {
+  padding: 16px 28px;
+  border-radius: 15px;
+  font-size: 18px;
+  font-weight: bold;
 }
 
-.final-message p {
-  color: #d7d7e2;
+.no-btn {
+  position: relative;
+  transition: transform 0.35s ease;
 }
 
-.reaction-area {
-  width: 100%;
-  animation: reactionAppear 0.6s ease;
+.big-yes {
+  font-size: 30px !important;
+  padding: 23px 60px !important;
+  animation: reactionPop 0.7s ease;
 }
 
-/* Screen transition */
+.press-message {
+  margin-top: 15px;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 1.7;
+}
+
+.reaction-pop {
+  animation: reactionPop 0.7s ease;
+}
 
 @keyframes screenIn {
   from {
@@ -251,120 +218,24 @@ textarea::placeholder {
   }
 }
 
-/* Cute floating moon */
-
 @keyframes float {
-  0%, 100% {
+  0%,100% {
     transform: translateY(0);
   }
 
   50% {
-    transform: translateY(-12px);
+    transform: translateY(-10px);
   }
 }
 
-/* Reaction */
-
-@keyframes reactionAppear {
+@keyframes reactionPop {
   0% {
+    transform: scale(0.3) rotate(-10deg);
     opacity: 0;
-    transform: scale(0.4) rotate(-8deg);
-  }
-
-  70% {
-    transform: scale(1.15) rotate(3deg);
-  }
-
-  100% {
-    opacity: 1;
-    transform: scale(1) rotate(0);
-  }
-}
-
-/* Angry */
-
-.angry {
-  animation: angry 0.5s ease;
-}
-
-@keyframes angry {
-  0%,100% {
-    transform: translateX(0);
-  }
-
-  20% {
-    transform: translateX(-8px);
-  }
-
-  40% {
-    transform: translateX(8px);
   }
 
   60% {
-    transform: translateX(-6px);
-  }
-
-  80% {
-    transform: translateX(6px);
-  }
-}
-
-/* Glasses */
-
-.glasses {
-  animation: glasses 0.7s ease;
-}
-
-@keyframes glasses {
-  0% {
-    transform: translateY(-30px) scale(0.5);
-    opacity: 0;
-  }
-
-  70% {
-    transform: translateY(5px) scale(1.1);
-  }
-
-  100% {
-    transform: translateY(0) scale(1);
-    opacity: 1;
-  }
-}
-
-/* Bounce */
-
-.bounce {
-  animation: bounce 0.7s ease;
-}
-
-@keyframes bounce {
-  0%,100% {
-    transform: translateY(0);
-  }
-
-  40% {
-    transform: translateY(-20px);
-  }
-
-  70% {
-    transform: translateY(-7px);
-  }
-}
-
-/* Sparkle */
-
-.sparkle {
-  animation: sparkle 1s ease;
-}
-
-@keyframes sparkle {
-  0% {
-    transform: scale(0.3) rotate(-30deg);
-    opacity: 0;
-  }
-
-  50% {
-    transform: scale(1.3) rotate(20deg);
+    transform: scale(1.25) rotate(5deg);
     opacity: 1;
   }
 
@@ -373,21 +244,21 @@ textarea::placeholder {
   }
 }
 
-/* Countdown */
-
 @keyframes countdownPop {
-  from {
+  0% {
     transform: scale(0.2);
     opacity: 0;
   }
 
-  to {
-    transform: scale(1);
+  70% {
+    transform: scale(1.3);
     opacity: 1;
   }
-}
 
-/* Birthday */
+  100% {
+    transform: scale(1);
+  }
+}
 
 @keyframes birthdayPop {
   0% {
@@ -396,54 +267,75 @@ textarea::placeholder {
   }
 
   70% {
-    transform: scale(1.12);
+    transform: scale(1.15);
+    opacity: 1;
   }
 
   100% {
     transform: scale(1);
-    opacity: 1;
   }
 }
-
-/* Hearts */
 
 @keyframes rise {
   from {
-    transform: translateY(0) rotate(0);
+    transform: translateY(0);
     opacity: 1;
   }
 
   to {
-    transform: translateY(-110vh) rotate(30deg);
+    transform: translateY(-110vh);
     opacity: 0;
   }
 }
-
-/* Stars */
 
 @keyframes twinkle {
   from {
-    opacity: 0.2;
-    transform: scale(0.7);
+    transform: scale(0);
+    opacity: 0;
+  }
+
+  30% {
+    opacity: 1;
   }
 
   to {
-    opacity: 1;
-    transform: scale(1.3);
+    transform: scale(1.8);
+    opacity: 0;
   }
 }
 
-/* Memory */
-
 @keyframes cardIn {
   from {
+    transform: translateY(30px);
     opacity: 0;
-    transform: translateY(30px) scale(0.95);
   }
 
   to {
+    transform: translateY(0);
     opacity: 1;
-    transform: translateY(0) scale(1);
+  }
+}
+
+@media (max-width: 500px) {
+
+  h1 {
+    font-size: 34px;
+  }
+
+  h2 {
+    font-size: 24px;
+  }
+
+  .birthday-title {
+    font-size: 38px;
+  }
+
+  .question-card {
+    padding: 30px 18px;
+  }
+
+  .memory-grid {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -452,851 +344,300 @@ textarea::placeholder {
 
 <body>
 
-<!-- MYSTERY -->
 
-<div class="screen" id="mystery">
+<!-- START -->
+<section id="start" class="screen active">
 
-  <div class="moon">🌙</div>
+  <div class="question-card">
 
-  <h1>
-    I made something <span class="pink">for you.</span>
-  </h1>
+    <div class="big-emoji">🌙</div>
 
-  <p>
-    But there's one rule...<br><br>
-    You have to go through the whole thing 👀
-  </p>
+    <h1>I made something for you.</h1>
 
-  <button onclick="start()">
-    Start the surprise →
-  </button>
+    <p>
+      But there's one rule...<br>
+      You have to go through the whole thing 👀
+    </p>
 
-</div>
+    <button onclick="startSurprise()">
+      Start the surprise →
+    </button>
+
+  </div>
+
+</section>
+
 
 
 <!-- QUESTIONS -->
+<section id="questionScreen" class="screen">
 
-<div class="screen hidden" id="question">
+  <div class="question-card">
 
-  <div class="counter" id="counter"></div>
+    <div id="questionEmoji" class="big-emoji">❤️</div>
 
-  <p>Before we continue...</p>
+    <h2 id="questionText"></h2>
 
-  <h1 class="question" id="questionText"></h1>
+    <div id="questionOptions" class="options"></div>
 
-  <div id="answers"></div>
+    <div id="textAnswerArea"></div>
 
-  <div id="response" class="response hidden"></div>
-
-</div>
-
-
-<!-- COUNTDOWN -->
-
-<div class="screen hidden" id="countdownScreen">
-
-  <div class="countdown" id="countdown"></div>
-
-</div>
-
-
-<!-- BIRTHDAY -->
-
-<div class="screen hidden" id="birthday">
-
-  <div class="moon">🎂</div>
-
-  <h1 class="birthday">
-    🎉 HAPPY BIRTHDAY RAFIA 🎉
-  </h1>
-
-  <p>
-    This whole thing was made specially for you. ❤️
-  </p>
-
-  <button onclick="showMemories()">
-    Continue → ❤️
-  </button>
-
-</div>
-
-
-<!-- MEMORIES -->
-
-<div class="screen hidden" id="memories">
-
-  <h1>A few memories... 📸</h1>
-
-  <div class="memory">
-
-    <div class="memory-placeholder">
-      Your photo will go here 📸
-    </div>
-
-    <p>
-      One of my favourite memories ❤️
-    </p>
+    <div id="reactionArea"></div>
 
   </div>
 
-  <button onclick="showMusic()">
-    Continue →
-  </button>
-
-</div>
+</section>
 
 
-<!-- MUSIC -->
 
-<div class="screen hidden" id="music">
+<!-- Q10 FUN QUESTION -->
+<section id="funQuestion" class="screen">
 
-  <div class="moon">🎵</div>
+  <div class="question-card">
 
-  <h1>Something for you...</h1>
+    <div class="big-emoji">👀</div>
 
-  <p>
-    A little music before the final message. 🌙
-  </p>
-
-  <button onclick="playMusic()">
-    🎵 Play something for you
-  </button>
-
-  <button onclick="showFinal()">
-    Continue →
-  </button>
-
-</div>
-
-
-<!-- FINAL -->
-
-<div class="screen hidden" id="final">
-
-  <h1>One last thing... ❤️</h1>
-
-  <div class="final-message">
+    <h2>
+      Are you ready for your actual birthday surprise?
+    </h2>
 
     <p>
-      Rafia,<br><br>
-
-      Honestly, I still don't know how someone who is this far away
-      managed to become such an important part of my life. 😭<br><br>
-
-      You've somehow managed to make random days better,
-      make boring conversations interesting, tolerate my nonsense,
-      and somehow still haven't blocked me...
-      which honestly deserves an award. 💀<br><br>
-
-      But jokes aside, I'm genuinely really glad I met you.<br><br>
-
-      I hope this new year of your life brings you happiness,
-      good memories, peace, success, and all the little things
-      you've been wishing for.<br><br>
-
-      Keep smiling, keep being yourself, and please don't become
-      too mature because I still need someone to annoy. 😭<br><br>
-
-      Happy Birthday, Rafia. ❤️<br><br>
-
-      I hope you liked this little surprise.<br><br>
-
-      And remember...<br><br>
-
-      You were worth all the effort. 🫶<br><br>
-
-      — From someone who is probably never going to stop annoying you 😂
+      Be honest... I'm watching your answer. 😭
     </p>
 
-  </div>
-
-  <button onclick="restart()">
-    Replay the surprise ↻
-  </button>
-
-</div>
-
-
-<script>
-
-const questions = [
-
-/* QUESTION 1 */
-
-{
-  text: "Do you know how special you actually are to me? ❤️",
-
-  answers: [
-    {
-      text: "Obviously 😌",
-      reaction: "OHH, look who's confident today. 😎❤️",
-      emoji: "😎",
-      animation: "glasses"
-    },
-
-    {
-      text: "Maybe? 👀",
-      reaction: "Hmm... still unsure? I might have to convince you. 👀",
-      emoji: "👀",
-      animation: "sparkle"
-    },
-
-    {
-      text: "I don't think so...",
-      reaction: "Then clearly I haven't told you enough yet. ❤️",
-      emoji: "🥺",
-      animation: "bounce"
-    }
-  ]
-},
-
-/* QUESTION 2 */
-
-{
-  text: "What's one thing about our friendship that you secretly love the most?",
-
-  answers: [
-    {
-      text: "Our random conversations",
-      reaction: "Those random conversations really are something else. 😂",
-      emoji: "💬",
-      animation: "bounce"
-    },
-
-    {
-      text: "Our stupid jokes 😭",
-      reaction: "Our humor is actually questionable. 😭😂",
-      emoji: "😂",
-      animation: "bounce"
-    },
-
-    {
-      text: "The fact that we can talk about anything",
-      reaction: "Okay... that's actually really sweet. 🫶",
-      emoji: "🫶",
-      animation: "sparkle"
-    },
-
-    {
-      text: "Honestly... everything",
-      reaction: "Okayyy, don't make me emotional now. 😭❤️",
-      emoji: "🥹",
-      animation: "glasses"
-    }
-  ]
-},
-
-/* QUESTION 3 */
-
-{
-  text: "Do you realize how many random days you've made better just by being there?",
-
-  answers: [
-    {
-      text: "Yes 😌",
-      reaction: "Look at you taking credit already. 😭😂",
-      emoji: "😌",
-      animation: "bounce"
-    },
-
-    {
-      text: "Maybe",
-      reaction: "Maybe? I'll accept that... for now. 👀",
-      emoji: "🤨",
-      animation: "sparkle"
-    },
-
-    {
-      text: "No way 😭",
-      reaction: "YES WAY. Don't argue with me on this one. 😭❤️",
-      emoji: "😤",
-      animation: "angry"
-    }
-  ]
-},
-
-/* QUESTION 4 */
-
-{
-  text: "If distance didn't exist for one day, what would we do first?",
-
-  answers: [
-    {
-      text: "Go somewhere random",
-      reaction: "Of course we'd have absolutely no plan. 😂",
-      emoji: "🗺️",
-      animation: "bounce"
-    },
-
-    {
-      text: "Talk for hours",
-      reaction: "And somehow we'd still have more to talk about. 😭",
-      emoji: "💬",
-      animation: "sparkle"
-    },
-
-    {
-      text: "Take a million pictures 📸",
-      reaction: "A million? You'd probably make it two million. 😂📸",
-      emoji: "📸",
-      animation: "glasses"
-    },
-
-    {
-      text: "Cause absolute chaos 💀",
-      reaction: "I KNEW you'd choose this one. 💀😂",
-      emoji: "💀",
-      animation: "angry"
-    }
-  ]
-},
-
-/* QUESTION 5 */
-
-{
-  text: "Who is more likely to start a completely unnecessary argument?",
-
-  answers: [
-    {
-      text: "Me 😭",
-      reaction: "At least you're honest. I'll give you that. 😂",
-      emoji: "👏",
-      animation: "bounce"
-    },
-
-    {
-      text: "You 💀",
-      reaction: "EXCUSE ME?? 😭 You really clicked that with confidence?",
-      emoji: "😤",
-      animation: "angry"
-    },
-
-    {
-      text: "Both of us",
-      reaction: "Finally... some honesty. 💀😂",
-      emoji: "🤝",
-      animation: "sparkle"
-    },
-
-    {
-      text: "Depends on the day...",
-      reaction: "Smart answer. You're learning how to survive us. 😭",
-      emoji: "🧠",
-      animation: "glasses"
-    }
-  ]
-},
-
-/* QUESTION 6 */
-
-{
-  text: "What's one memory or conversation between us that you'd never want to forget?",
-
-  textBox: true,
-
-  placeholder: "Write your answer here...",
-
-  button: "Keep this memory →",
-
-  reaction: "Okay... that one is getting saved in the imaginary memory vault. ❤️",
-  emoji: "🔐",
-  animation: "sparkle"
-},
-
-/* QUESTION 7 */
-
-{
-  text: "Do you know that I'm genuinely glad I met you?",
-
-  answers: [
-    {
-      text: "Yes ❤️",
-      reaction: "Good. Because I really mean it. ❤️",
-      emoji: "❤️",
-      animation: "sparkle"
-    },
-
-    {
-      text: "Now I do",
-      reaction: "Then mission accomplished. 🫶",
-      emoji: "✨",
-      animation: "bounce"
-    },
-
-    {
-      text: "You better be 😭",
-      reaction: "Trust me, I am. Don't make me prove it. 😭",
-      emoji: "😤❤️",
-      animation: "angry"
-    }
-  ]
-},
-
-/* QUESTION 8 */
-
-{
-  text: "If we could meet right now, where would we go?",
-
-  answers: [
-    {
-      text: "Somewhere peaceful 🌙",
-      reaction: "Honestly... that sounds kinda perfect. 🌙✨",
-      emoji: "🌙",
-      animation: "sparkle"
-    },
-
-    {
-      text: "Somewhere completely random 😂",
-      reaction: "No destination. Just vibes. 😂",
-      emoji: "🚗",
-      animation: "bounce"
-    },
-
-    {
-      text: "Food first. Obviously.",
-      reaction: "FINALLY, someone with priorities. 😂🍕",
-      emoji: "🍕",
-      animation: "glasses"
-    },
-
-    {
-      text: "Wherever, as long as we're together",
-      reaction: "Okay... you didn't have to make that this cute. 🥹❤️",
-      emoji: "🥹",
-      animation: "sparkle"
-    }
-  ]
-},
-
-/* QUESTION 9 */
-
-{
-  text: "What's one thing you want this new year of your life to bring you?",
-
-  textBox: true,
-
-  placeholder: "Make a wish...",
-
-  button: "Save my wish ✨",
-
-  reaction: "Wish saved. Now let's hope this year is extra kind to you. ✨❤️",
-  emoji: "🌟",
-  animation: "sparkle"
-},
-
-/* QUESTION 10 */
-
-{
-  text: "Okay Rafia... Are you ready for your actual birthday surprise? 🎁",
-
-  answers: [
-    {
-      text: "YES, SHOW ME ❤️",
-      reaction: "THAT'S THE ENERGY I WAS WAITING FOR. 🎉❤️",
-      emoji: "🎉",
-      animation: "bounce"
-    },
-
-    {
-      text: "I'm scared 😭",
-      reaction: "Too late. There's no going back now. 😂❤️",
-      emoji: "👀",
-      animation: "glasses"
-    }
-  ]
-}
-
-];
-
-
-let current = 0;
-
-
-/* Hide every screen */
-
-function hideAll() {
-
-  document.querySelectorAll(".screen").forEach(screen => {
-
-    screen.classList.add("hidden");
-
-  });
-
-}
-
-
-/* Start */
-
-function start() {
-
-  hideAll();
-
-  document.getElementById("question").classList.remove("hidden");
-
-  showQuestion();
-
-  createStars();
-
-}
-
-
-/* Show question */
-
-function showQuestion() {
-
-  const q = questions[current];
-
-  document.getElementById("counter").innerText =
-    `Question ${current + 1} / 10`;
-
-  document.getElementById("questionText").innerText =
-    q.text;
-
-  const answers = document.getElementById("answers");
-
-  const response = document.getElementById("response");
-
-  answers.innerHTML = "";
-
-  response.innerHTML = "";
-
-  response.classList.add("hidden");
-
-
-  /* Text box questions */
-
-  if (q.textBox) {
-
-    const box = document.createElement("textarea");
-
-    box.placeholder = q.placeholder;
-
-    box.id = "memoryInput";
-
-    answers.appendChild(box);
-
-
-    const button = document.createElement("button");
-
-    button.innerText = q.button;
-
-    button.onclick = () => {
-
-      answerTextQuestion();
-
-    };
-
-    answers.appendChild(button);
-
-  }
-
-
-  /* Normal questions */
-
-  else {
-
-    q.answers.forEach((answer, index) => {
-
-      const button = document.createElement("button");
-
-      button.className = "answer";
-
-      button.innerText = answer.text;
-
-      button.onclick = () => {
-
-        answerQuestion(index);
-
-      };
-
-      answers.appendChild(button);
-
-    });
-
-  }
-
-}
-
-
-/* Normal answer */
-
-function answerQuestion(index) {
-
-  const q = questions[current];
-
-  const selected = q.answers[index];
-
-  showReaction(
-    selected.reaction,
-    selected.emoji,
-    selected.animation
-  );
-
-}
-
-
-/* Text answer */
-
-function answerTextQuestion() {
-
-  const q = questions[current];
-
-  showReaction(
-    q.reaction,
-    q.emoji,
-    q.animation
-  );
-
-}
-
-
-/* Reaction */
-
-function showReaction(text, emoji, animation) {
-
-  const answers = document.getElementById("answers");
-
-  const response = document.getElementById("response");
-
-  answers.style.display = "none";
-
-  response.classList.remove("hidden");
-
-  response.innerHTML = `
-
-    <div class="reaction-area">
-
-      <div class="reaction ${animation}">
-        ${emoji}
-      </div>
-
-      <div class="reactionText">
-        ${text}
-      </div>
-
-      <button class="nextButton" onclick="nextQuestion()">
-        Next →
+    <div class="fun-buttons" id="funButtons">
+
+      <button
+        class="yes-btn"
+        onclick="finalYes()">
+        YES ❤️
+      </button>
+
+      <button
+        class="no-btn"
+        id="noBtn"
+        onclick="moveNo()">
+        NO 😭
       </button>
 
     </div>
 
-  `;
+    <div
+      id="pressMessage"
+      class="press-message">
+    </div>
 
-  createHearts();
+  </div>
 
-}
+</section>
 
 
-/* Next question */
 
-function nextQuestion() {
+<!-- COUNTDOWN -->
+<section id="countdownScreen" class="screen">
 
-  current++;
+  <div>
 
-  if (current >= questions.length) {
+    <div
+      id="countdownNumber"
+      class="countdown">
+      3
+    </div>
 
-    startCountdown();
+  </div>
 
-    return;
+</section>
 
-  }
 
-  const answers = document.getElementById("answers");
 
-  answers.style.display = "block";
+<!-- BIRTHDAY -->
+<section id="birthdayScreen" class="screen">
 
-  showQuestion();
+  <div class="question-card">
 
-}
+    <div class="big-emoji">🎉</div>
 
+    <h1 class="birthday-title">
+      HAPPY BIRTHDAY RAFIA 🎉
+    </h1>
 
-/* Countdown */
+    <p>
+      This whole thing was made specially for you. ❤️
+    </p>
 
-function startCountdown() {
+    <button onclick="showMemories()">
+      Continue → 
+    </button>
 
-  hideAll();
+  </div>
 
-  const screen =
-    document.getElementById("countdownScreen");
+</section>
 
-  screen.classList.remove("hidden");
 
-  let number = 3;
 
-  const countdown =
-    document.getElementById("countdown");
+<!-- MEMORIES -->
+<section id="memoriesScreen" class="screen">
 
-  countdown.innerText = number;
+  <div class="question-card">
 
-  const timer = setInterval(() => {
+    <div class="big-emoji">📸</div>
 
-    number--;
+    <h2>A few memories...</h2>
 
-    if (number > 0) {
+    <p>
+      A few little placeholders for now. ❤️
+    </p>
 
-      countdown.innerText = number;
+    <div class="memory-grid">
 
-    }
+      <div class="memory-card">📷</div>
 
-    else {
+      <div class="memory-card">🌙</div>
 
-      clearInterval(timer);
+      <div class="memory-card">😂</div>
 
-      showBirthday();
+      <div class="memory-card">❤️</div>
 
-    }
+    </div>
 
-  }, 1000);
+    <button onclick="showMusic()">
+      Continue →
+    </button>
 
-}
+  </div>
 
+</section>
 
-/* Birthday */
 
-function showBirthday() {
 
-  hideAll();
+<!-- MUSIC -->
+<section id="musicScreen" class="screen">
 
-  document
-    .getElementById("birthday")
-    .classList.remove("hidden");
+  <div class="question-card">
 
-  createHearts();
+    <div class="big-emoji">🎵</div>
 
-  createStars();
+    <h2>Play something for you</h2>
 
-}
+    <p>
+      A little soundtrack for the moment. 🎧
+    </p>
 
+    <button
+      class="music-button"
+      onclick="playMusic()">
+      🎵 Play something for you
+    </button>
 
-/* Memories */
+    <br>
 
-function showMemories() {
+    <button onclick="showFinal()">
+      Skip → 
+    </button>
 
-  hideAll();
+  </div>
 
-  document
-    .getElementById("memories")
-    .classList.remove("hidden");
+</section>
 
-}
 
 
-/* Music */
+<!-- FINAL -->
+<section id="finalScreen" class="screen">
 
-function showMusic() {
+  <div class="question-card">
 
-  hideAll();
+    <div class="big-emoji">❤️</div>
 
-  document
-    .getElementById("music")
-    .classList.remove("hidden");
+    <div class="final-message">
 
-}
+Rafia,
 
+Honestly, I still don't know how someone who is this far away managed to become such an important part of my life. 😭
 
-/* Temporary music button */
+You've somehow managed to make random days better, make boring conversations interesting, tolerate my nonsense, and somehow still haven't blocked me... which honestly deserves an award. 💀
 
-function playMusic() {
+But jokes aside, I'm genuinely really glad I met you.
 
-  alert(
-    "Your licensed/royalty-free music will be added here 🎵"
-  );
+I hope this new year of your life brings you happiness, good memories, peace, success, and all the little things you've been wishing for.
 
-}
+Keep smiling, keep being yourself, and please don't become too mature because I still need someone to annoy. 😭
 
+Happy Birthday, Rafia. ❤️
 
-/* Final */
+I hope you liked this little surprise.
 
-function showFinal() {
+And remember...
 
-  hideAll();
+You were worth all the effort. 🫶
 
-  document
-    .getElementById("final")
-    .classList.remove("hidden");
+— From someone who is probably never going to stop annoying you 😂
 
-  createHearts();
+    </div>
 
-}
+    <br>
 
+    <h3>
+      Made specially for Rafia ♡
+    </h3>
 
-/* Replay */
+    <p>
+      September 2026
+    </p>
 
-function restart() {
+    <button onclick="restart()">
+      Replay the surprise ↻
+    </button>
 
-  current = 0;
+  </div>
 
-  hideAll();
+</section>
 
-  document
-    .getElementById("mystery")
-    .classList.remove("hidden");
 
-}
 
+<script>
 
-/* Floating hearts */
 
-function createHearts() {
+const questions = [
 
-  for (let i = 0; i < 8; i++) {
+  {
+    emoji: "❤️",
 
-    const heart =
-      document.createElement("div");
+    text: "Do you know how special you actually are to me?",
 
-    heart.className = "heart";
+    options: [
+      ["Obviously 😌", "OHH, look who's confident today. 😎❤️", "😎"],
+      ["Maybe? 👀", "Hmm... still unsure? I might have to convince you. 👀", "👀"],
+      ["I don't think so...", "Then clearly I haven't told you enough yet. ❤️", "🥺"]
+    ]
+  },
 
-    heart.innerText =
-      Math.random() > 0.5 ? "❤️" : "💕";
 
-    heart.style.left =
-      Math.random() * 100 + "%";
+  {
+    emoji: "💬",
 
-    heart.style.animationDelay =
-      Math.random() * 2 + "s";
+    text: "What's one thing about our friendship that you secretly love the most?",
 
-    document.body.appendChild(heart);
+    options: [
+      ["Our random conversations", "Those random conversations really are something else. 😂", "💬"],
+      ["Our stupid jokes 😭", "Our humor is actually questionable. 😭😂", "😂"],
+      ["The fact that we can talk about anything", "Okay... that's actually really sweet. 🫶", "🫶"],
+      ["Honestly... everything", "Okayyy, don't make me emotional now. 😭❤️", "🥹"]
+    ]
+  },
 
-    setTimeout(() => {
 
-      heart.remove();
+  {
+    emoji: "✨",
 
-    }, 6000);
+    text: "Do you realize how many random days you've made better just by being there?",
 
-  }
+    options: [
+      ["Yes 😌", "Look at you taking credit already. 😭😂", "😌"],
+      ["Maybe", "Maybe? I'll accept that... for now. 👀", "🤨"],
+      ["No way 😭", "YES WAY. Don't argue with me on this one. 😭❤️", "😤"]
+    ]
+  },
 
-}
 
-
-/* Stars */
-
-function createStars() {
-
-  for (let i = 0; i < 15; i++) {
-
-    const star =
-      document.createElement("div");
-
-    star.className = "star";
-
-    star.innerText = "✦";
-
-    star.style.left =
-      Math.random() * 100 + "%";
-
-    star.style.top =
-      Math.random() * 100 + "%";
-
-    star.style.animationDelay =
-      Math.random() * 2 + "s";
-
-    document.body.appendChild(star);
-
-  }
-
-}
-
-</script>
-
-</body>
-  </html>
+  {
+    emoji:

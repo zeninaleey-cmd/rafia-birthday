@@ -1,215 +1,844 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>For Rafia ❤️</title>
+<title>For Rafia ❤️</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+<style>
 
-    body {
-      min-height: 100vh;
-      background: #090914;
-      color: white;
-      font-family: Arial, sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      overflow: hidden;
-    }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-    .screen {
-      width: 100%;
-      max-width: 500px;
-      min-height: 100vh;
-      padding: 30px 22px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      animation: fadeIn 1s ease;
-    }
+body {
+  min-height: 100vh;
+  background: #080811;
+  color: white;
+  font-family: Arial, sans-serif;
+  overflow: hidden;
+}
 
-    .moon {
-      font-size: 55px;
-      margin-bottom: 25px;
-      animation: float 3s ease-in-out infinite;
-    }
+.screen {
+  min-height: 100vh;
+  width: 100%;
+  max-width: 520px;
+  margin: auto;
+  padding: 30px 22px;
 
-    h1 {
-      font-size: 32px;
-      margin-bottom: 18px;
-    }
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
-    p {
-      color: #c9c9d8;
-      font-size: 17px;
-      line-height: 1.6;
-      margin-bottom: 30px;
-    }
+  text-align: center;
 
-    .highlight {
-      color: #ff8fb3;
-    }
+  animation: fadeIn 0.7s ease;
+}
 
-    button {
-      border: none;
-      border-radius: 30px;
-      padding: 15px 25px;
-      margin: 7px;
-      font-size: 15px;
-      font-weight: bold;
-      cursor: pointer;
-      color: white;
-      background: linear-gradient(135deg, #ff4f81, #a855f7);
-      box-shadow: 0 8px 25px rgba(255, 79, 129, 0.25);
-      transition: 0.25s;
-    }
+.hidden {
+  display: none !important;
+}
 
-    button:active {
-      transform: scale(0.95);
-    }
+.moon {
+  font-size: 65px;
+  margin-bottom: 25px;
+  animation: float 3s ease-in-out infinite;
+}
 
-    .question {
-      font-size: 27px;
-      line-height: 1.35;
-      margin-bottom: 25px;
-    }
+h1 {
+  font-size: 31px;
+  line-height: 1.3;
+  margin-bottom: 18px;
+}
 
-    .answers {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
+p {
+  color: #c8c8d8;
+  font-size: 17px;
+  line-height: 1.6;
+  margin-bottom: 25px;
+}
 
-    .answers button {
-      width: 100%;
-      margin: 0;
-      background: #171727;
-      border: 1px solid #33334a;
-      box-shadow: none;
-    }
+.pink {
+  color: #ff91b6;
+}
 
-    .answers button:hover {
-      background: #24243a;
-    }
+button {
+  width: 100%;
+  max-width: 360px;
 
-    .response {
-      margin-top: 25px;
-      color: #ffabc5;
-      font-size: 18px;
-      line-height: 1.5;
-      animation: fadeIn 0.7s ease;
-    }
+  padding: 15px 20px;
+  margin: 6px 0;
 
-    .hidden {
-      display: none;
-    }
+  border: none;
+  border-radius: 30px;
 
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(15px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
 
-    @keyframes float {
-      0%, 100% {
-        transform: translateY(0);
-      }
-      50% {
-        transform: translateY(-10px);
-      }
-    }
-  </style>
+  background: linear-gradient(135deg, #ff4f81, #9b5cff);
+
+  cursor: pointer;
+
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+button:active {
+  transform: scale(0.94);
+}
+
+button:hover {
+  box-shadow: 0 8px 30px rgba(255, 100, 160, 0.25);
+}
+
+.answer {
+  background: #181827;
+  border: 1px solid #34344a;
+}
+
+.answer:hover {
+  background: #23233a;
+}
+
+.question {
+  font-size: 27px;
+  margin-bottom: 25px;
+}
+
+.response {
+  margin-top: 20px;
+  color: #ffabc6;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+textarea {
+  width: 100%;
+  max-width: 360px;
+  height: 120px;
+
+  margin: 10px 0 15px;
+
+  padding: 15px;
+
+  border-radius: 18px;
+  border: 1px solid #36364d;
+
+  background: #151522;
+  color: white;
+
+  font-size: 15px;
+  resize: none;
+}
+
+textarea::placeholder {
+  color: #77778b;
+}
+
+.counter {
+  position: absolute;
+  top: 25px;
+  color: #77778b;
+  font-size: 14px;
+}
+
+.countdown {
+  font-size: 80px;
+  animation: zoom 1s ease;
+}
+
+.birthday {
+  font-size: 38px;
+  color: #ff91b6;
+  animation: birthdayPop 1s ease;
+}
+
+.heart {
+  position: fixed;
+  bottom: -30px;
+  font-size: 20px;
+  animation: rise 5s linear forwards;
+  pointer-events: none;
+}
+
+.star {
+  position: fixed;
+  color: white;
+  animation: twinkle 2s infinite alternate;
+  pointer-events: none;
+}
+
+.memory {
+  width: 100%;
+  max-width: 350px;
+
+  padding: 20px;
+
+  border-radius: 25px;
+
+  background: #151522;
+  border: 1px solid #303044;
+
+  animation: cardIn 0.8s ease;
+}
+
+.memory-placeholder {
+  height: 230px;
+
+  border-radius: 18px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: #222235;
+
+  color: #77778b;
+  margin-bottom: 15px;
+}
+
+.final-message {
+  max-height: 70vh;
+  overflow-y: auto;
+  text-align: left;
+
+  padding: 5px;
+}
+
+.final-message p {
+  color: #d7d7e2;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%,100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes zoom {
+  from {
+    transform: scale(0.3);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes birthdayPop {
+  0% {
+    transform: scale(0.4);
+    opacity: 0;
+  }
+
+  70% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes rise {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  to {
+    transform: translateY(-110vh);
+    opacity: 0;
+  }
+}
+
+@keyframes twinkle {
+  from {
+    opacity: 0.2;
+    transform: scale(0.8);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+@keyframes cardIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+</style>
 </head>
 
 <body>
 
-  <!-- MYSTERY SCREEN -->
-  <div class="screen" id="mysteryScreen">
+<!-- MYSTERY -->
 
-    <div class="moon">🌙</div>
+<div class="screen" id="mystery">
 
-    <h1>I made something <span class="highlight">for you.</span></h1>
+  <div class="moon">🌙</div>
+
+  <h1>
+    I made something <span class="pink">for you.</span>
+  </h1>
+
+  <p>
+    But there's one rule...<br><br>
+    You have to go through the whole thing 👀
+  </p>
+
+  <button onclick="start()">
+    Start the surprise →
+  </button>
+
+</div>
+
+
+<!-- QUESTIONS -->
+
+<div class="screen hidden" id="question">
+
+  <div class="counter" id="counter"></div>
+
+  <p>Before we continue...</p>
+
+  <h1 class="question" id="questionText"></h1>
+
+  <div id="answers"></div>
+
+  <div id="response" class="response"></div>
+
+</div>
+
+
+<!-- COUNTDOWN -->
+
+<div class="screen hidden" id="countdownScreen">
+
+  <div class="countdown" id="countdown"></div>
+
+</div>
+
+
+<!-- BIRTHDAY -->
+
+<div class="screen hidden" id="birthday">
+
+  <div class="moon">🎂</div>
+
+  <h1 class="birthday">
+    🎉 HAPPY BIRTHDAY RAFIA 🎉
+  </h1>
+
+  <p>
+    This whole thing was made specially for you. ❤️
+  </p>
+
+  <button onclick="showMemories()">
+    Continue → ❤️
+  </button>
+
+</div>
+
+
+<!-- MEMORIES -->
+
+<div class="screen hidden" id="memories">
+
+  <h1>A few memories... 📸</h1>
+
+  <div class="memory">
+
+    <div class="memory-placeholder">
+      Your photo will go here 📸
+    </div>
 
     <p>
-      But there's one rule...<br><br>
-      You have to go through the whole thing 👀
+      One of my favourite memories ❤️
     </p>
 
-    <button onclick="startSurprise()">
-      Start the surprise →
-    </button>
+  </div>
+
+  <button onclick="showMusic()">
+    Continue →
+  </button>
+
+</div>
+
+
+<!-- MUSIC -->
+
+<div class="screen hidden" id="music">
+
+  <div class="moon">🎵</div>
+
+  <h1>Something for you...</h1>
+
+  <p>
+    A little music before the final message. 🌙
+  </p>
+
+  <button onclick="playMusic()">
+    🎵 Play something for you
+  </button>
+
+  <button onclick="showFinal()">
+    Continue →
+  </button>
+
+</div>
+
+
+<!-- FINAL MESSAGE -->
+
+<div class="screen hidden" id="final">
+
+  <h1>One last thing... ❤️</h1>
+
+  <div class="final-message">
+
+    <p>
+      Rafia,<br><br>
+
+      Honestly, I still don't know how someone who is this far away
+      managed to become such an important part of my life. 😭<br><br>
+
+      You've somehow managed to make random days better,
+      make boring conversations interesting, tolerate my nonsense,
+      and somehow still haven't blocked me...
+      which honestly deserves an award. 💀<br><br>
+
+      But jokes aside, I'm genuinely really glad I met you.<br><br>
+
+      I hope this new year of your life brings you happiness,
+      good memories, peace, success, and all the little things
+      you've been wishing for.<br><br>
+
+      Keep smiling, keep being yourself, and please don't become
+      too mature because I still need someone to annoy. 😭<br><br>
+
+      Happy Birthday, Rafia. ❤️<br><br>
+
+      I hope you liked this little surprise.<br><br>
+
+      And remember...<br><br>
+
+      You were worth all the effort. 🫶<br><br>
+
+      — From someone who is probably never going to stop annoying you 😂
+    </p>
 
   </div>
 
+  <button onclick="restart()">
+    Replay the surprise ↻
+  </button>
 
-  <!-- QUESTION 1 -->
-  <div class="screen hidden" id="questionScreen">
-
-    <p>Before we start...</p>
-
-    <h1 class="question">
-      Do you know how special you actually are to me? ❤️
-    </h1>
-
-    <div class="answers">
-
-      <button onclick="answerQuestion()">
-        Obviously 😌
-      </button>
-
-      <button onclick="answerQuestion()">
-        Maybe? 👀
-      </button>
-
-      <button onclick="answerQuestion()">
-        I don't think so...
-      </button>
-
-    </div>
-
-    <div id="response" class="response hidden">
-      Well... I'm here to remind you. ❤️
-      <br><br>
-
-      <button onclick="nextStep()">
-        Next →
-      </button>
-    </div>
-
-  </div>
+</div>
 
 
-  <script>
+<script>
 
-    function startSurprise() {
-      document.getElementById("mysteryScreen").classList.add("hidden");
-      document.getElementById("questionScreen").classList.remove("hidden");
+const questions = [
+
+{
+text: "Do you know how special you actually are to me? ❤️",
+answers: [
+"Obviously 😌",
+"Maybe? 👀",
+"I don't think so..."
+],
+response: "Well... I'm here to remind you. ❤️"
+},
+
+{
+text: "What's one thing about our friendship that you secretly love the most?",
+answers: [
+"Our random conversations",
+"Our stupid jokes 😭",
+"The fact that we can talk about anything",
+"Honestly... everything"
+],
+response: "Whatever you picked, I hope we never lose that. 🫶"
+},
+
+{
+text: "Do you realize how many random days you've made better just by being there?",
+answers: [
+"Yes 😌",
+"Maybe",
+"No way 😭"
+],
+response: "Well, now you know. ❤️"
+},
+
+{
+text: "If distance didn't exist for one day, what would we do first?",
+answers: [
+"Go somewhere random",
+"Talk for hours",
+"Take a million pictures 📸",
+"Cause absolute chaos 💀"
+],
+response: "Honestly... probably all four. 😭"
+},
+
+{
+text: "Who is more likely to start a completely unnecessary argument?",
+answers: [
+"Me 😭",
+"You 💀",
+"Both of us",
+"Depends on the day..."
+],
+response: "Correct answer: definitely both of us. 😂"
+},
+
+{
+text: "What's one memory or conversation between us that you'd never want to forget?",
+textBox: true,
+placeholder: "Write your answer here...",
+button: "Keep this memory →",
+response: "Some memories are worth keeping forever. ❤️"
+},
+
+{
+text: "Do you know that I'm genuinely glad I met you?",
+answers: [
+"Yes ❤️",
+"Now I do",
+"You better be 😭"
+],
+response: "I really am. No jokes this time."
+},
+
+{
+text: "If we could meet right now, where would we go?",
+answers: [
+"Somewhere peaceful 🌙",
+"Somewhere completely random 😂",
+"Food first. Obviously.",
+"Wherever, as long as we're together"
+],
+response: "Okay, that sounds like a plan. 👀"
+},
+
+{
+text: "What's one thing you want this new year of your life to bring you?",
+textBox: true,
+placeholder: "Make a wish...",
+button: "Save my wish ✨",
+response: "I hope you get every bit of it. ❤️"
+},
+
+{
+text: "Okay Rafia... Are you ready for your actual birthday surprise? 🎁",
+answers: [
+"YES, SHOW ME ❤️",
+"I'm scared 😭"
+],
+response: "Too late. There's no going back now. 😂❤️"
+}
+
+];
+
+let current = 0;
+
+
+function hideAll() {
+
+  document.querySelectorAll(".screen").forEach(screen => {
+    screen.classList.add("hidden");
+  });
+
+}
+
+
+function start() {
+
+  hideAll();
+
+  document.getElementById("question").classList.remove("hidden");
+
+  showQuestion();
+
+  createStars();
+
+}
+
+
+function showQuestion() {
+
+  const q = questions[current];
+
+  document.getElementById("counter").innerText =
+    `Question ${current + 1} / 10`;
+
+  document.getElementById("questionText").innerText = q.text;
+
+  const answers = document.getElementById("answers");
+
+  const response = document.getElementById("response");
+
+  answers.innerHTML = "";
+
+  response.innerHTML = "";
+
+  response.classList.add("hidden");
+
+
+  if (q.textBox) {
+
+    const box = document.createElement("textarea");
+
+    box.placeholder = q.placeholder;
+
+    box.id = "memoryInput";
+
+    answers.appendChild(box);
+
+    const button = document.createElement("button");
+
+    button.innerText = q.button;
+
+    button.onclick = () => answerQuestion();
+
+    answers.appendChild(button);
+
+  }
+
+  else {
+
+    q.answers.forEach(answer => {
+
+      const button = document.createElement("button");
+
+      button.className = "answer";
+
+      button.innerText = answer;
+
+      button.onclick = () => answerQuestion();
+
+      answers.appendChild(button);
+
+    });
+
+  }
+
+}
+
+
+function answerQuestion() {
+
+  const q = questions[current];
+
+  const response = document.getElementById("response");
+
+  response.innerHTML = `
+    ${q.response}
+    <br><br>
+    <button onclick="nextQuestion()">Next →</button>
+  `;
+
+  response.classList.remove("hidden");
+
+  createHearts();
+
+}
+
+
+function nextQuestion() {
+
+  current++;
+
+  if (current >= questions.length) {
+
+    startCountdown();
+
+    return;
+
+  }
+
+  showQuestion();
+
+}
+
+
+function startCountdown() {
+
+  hideAll();
+
+  const screen = document.getElementById("countdownScreen");
+
+  screen.classList.remove("hidden");
+
+  let number = 3;
+
+  const countdown = document.getElementById("countdown");
+
+  countdown.innerText = number;
+
+  const timer = setInterval(() => {
+
+    number--;
+
+    if (number > 0) {
+
+      countdown.innerText = number;
+
     }
 
-    function answerQuestion() {
-      document.getElementById("response").classList.remove("hidden");
+    else {
+
+      clearInterval(timer);
+
+      showBirthday();
+
     }
 
-    function nextStep() {
-      alert("Question 2 is coming next ❤️");
-    }
+  }, 1000);
 
-  </script>
+}
+
+
+function showBirthday() {
+
+  hideAll();
+
+  document.getElementById("birthday").classList.remove("hidden");
+
+  createHearts();
+
+  createStars();
+
+}
+
+
+function showMemories() {
+
+  hideAll();
+
+  document.getElementById("memories").classList.remove("hidden");
+
+}
+
+
+function showMusic() {
+
+  hideAll();
+
+  document.getElementById("music").classList.remove("hidden");
+
+}
+
+
+function playMusic() {
+
+  alert("Add your licensed/royalty-free music file here 🎵");
+
+}
+
+
+function showFinal() {
+
+  hideAll();
+
+  document.getElementById("final").classList.remove("hidden");
+
+  createHearts();
+
+}
+
+
+function restart() {
+
+  current = 0;
+
+  hideAll();
+
+  document.getElementById("mystery").classList.remove("hidden");
+
+}
+
+
+function createHearts() {
+
+  for (let i = 0; i < 8; i++) {
+
+    const heart = document.createElement("div");
+
+    heart.className = "heart";
+
+    heart.innerText = "❤️";
+
+    heart.style.left = Math.random() * 100 + "%";
+
+    heart.style.animationDelay = Math.random() * 2 + "s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 6000);
+
+  }
+
+}
+
+
+function createStars() {
+
+  for (let i = 0; i < 15; i++) {
+
+    const star = document.createElement("div");
+
+    star.className = "star";
+
+    star.innerText = "✦";
+
+    star.style.left = Math.random() * 100 + "%";
+
+    star.style.top = Math.random() * 100 + "%";
+
+    star.style.animationDelay = Math.random() * 2 + "s";
+
+    document.body.appendChild(star);
+
+  }
+
+}
+
+</script>
 
 </body>
-        </html>
+</html>

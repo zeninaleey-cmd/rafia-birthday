@@ -1,1 +1,1716 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>For Rafia ♡</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+
+        /* =========================================================
+           GLOBAL
+        ========================================================= */
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-height: 100vh;
+            overflow-x: hidden;
+            background:
+                radial-gradient(circle at 20% 20%, rgba(255, 129, 176, 0.15), transparent 30%),
+                radial-gradient(circle at 80% 70%, rgba(158, 123, 255, 0.13), transparent 35%),
+                #08070d;
+            color: #fff;
+            font-family: "DM Sans", sans-serif;
+        }
+
+        button,
+        input,
+        textarea {
+            font-family: inherit;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        .screen {
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            min-height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            padding: 25px;
+
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+
+            transform: scale(1.03);
+
+            transition:
+                opacity 0.65s ease,
+                transform 0.75s cubic-bezier(.2,.8,.2,1),
+                visibility 0.65s ease;
+
+            overflow-y: auto;
+        }
+
+        .screen.active {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+            transform: scale(1);
+        }
+
+        .content {
+            width: min(720px, 100%);
+            text-align: center;
+            position: relative;
+            z-index: 5;
+        }
+
+        /* =========================================================
+           BACKGROUND
+        ========================================================= */
+
+        .background-glow {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .glow {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            filter: blur(90px);
+            opacity: 0.18;
+            animation: floatGlow 10s ease-in-out infinite alternate;
+        }
+
+        .glow.one {
+            background: #ff5f9e;
+            top: -100px;
+            left: -80px;
+        }
+
+        .glow.two {
+            background: #9c7cff;
+            right: -100px;
+            bottom: -80px;
+            animation-delay: -4s;
+        }
+
+        .glow.three {
+            background: #ffb6d5;
+            left: 40%;
+            top: 40%;
+            width: 180px;
+            height: 180px;
+            animation-delay: -7s;
+        }
+
+        @keyframes floatGlow {
+            from {
+                transform: translate(0, 0) scale(1);
+            }
+
+            to {
+                transform: translate(40px, -30px) scale(1.2);
+            }
+        }
+
+        /* =========================================================
+           INTRO
+        ========================================================= */
+
+        .moon {
+            width: 88px;
+            height: 88px;
+            margin: 0 auto 35px;
+
+            border-radius: 50%;
+
+            background:
+                radial-gradient(circle at 35% 30%, #fff, #ffdce9 45%, #ff9fc5);
+
+            box-shadow:
+                0 0 25px rgba(255, 192, 220, 0.5),
+                0 0 80px rgba(255, 116, 176, 0.25);
+
+            animation: moonFloat 4s ease-in-out infinite;
+        }
+
+        @keyframes moonFloat {
+            0%,100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .eyebrow {
+            color: #ffabc9;
+            font-size: 12px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+        }
+
+        .intro-title {
+            font-family: "Cormorant Garamond", serif;
+            font-size: clamp(48px, 11vw, 90px);
+            line-height: 0.95;
+            font-weight: 600;
+            margin-bottom: 25px;
+        }
+
+        .intro-title span {
+            color: #ff9fc5;
+        }
+
+        .intro-text {
+            max-width: 500px;
+            margin: auto;
+
+            color: rgba(255,255,255,0.65);
+            font-size: 15px;
+            line-height: 1.8;
+        }
+
+        /* =========================================================
+           BUTTONS
+        ========================================================= */
+
+        .primary-btn {
+            margin-top: 32px;
+
+            border: 1px solid rgba(255,255,255,0.16);
+            border-radius: 100px;
+
+            padding: 15px 27px;
+
+            color: white;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(255,111,165,0.9),
+                    rgba(155,119,255,0.85)
+                );
+
+            box-shadow:
+                0 10px 40px rgba(255, 90, 155, 0.22);
+
+            font-size: 14px;
+            font-weight: 600;
+
+            transition:
+                transform .25s ease,
+                box-shadow .25s ease;
+        }
+
+        .primary-btn:hover {
+            transform: translateY(-3px);
+            box-shadow:
+                0 15px 50px rgba(255, 90, 155, 0.35);
+        }
+
+        .primary-btn:active {
+            transform: scale(.96);
+        }
+
+        /* =========================================================
+           QUESTION CARD
+        ========================================================= */
+
+        .question-number {
+            color: #ff9fc5;
+            font-size: 12px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .question-card {
+            padding: clamp(28px, 6vw, 55px);
+
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 30px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,0.08),
+                    rgba(255,255,255,0.025)
+                );
+
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+
+            box-shadow:
+                0 30px 100px rgba(0,0,0,.35);
+        }
+
+        .question-title {
+            font-family: "Playfair Display", serif;
+            font-size: clamp(27px, 6vw, 45px);
+            line-height: 1.25;
+            margin-bottom: 32px;
+        }
+
+        .answers {
+            display: grid;
+            gap: 12px;
+        }
+
+        .answer-btn {
+            width: 100%;
+            padding: 16px 20px;
+
+            border-radius: 18px;
+            border: 1px solid rgba(255,255,255,0.09);
+
+            color: rgba(255,255,255,0.88);
+            background: rgba(255,255,255,0.045);
+
+            font-size: 14px;
+
+            transition:
+                background .25s ease,
+                transform .25s ease,
+                border-color .25s ease;
+        }
+
+        .answer-btn:hover {
+            background: rgba(255,140,190,.12);
+            border-color: rgba(255,150,195,.35);
+            transform: translateY(-2px);
+        }
+
+        .response {
+            min-height: 25px;
+            margin-top: 22px;
+
+            color: #ffb7d2;
+            font-family: "Cormorant Garamond", serif;
+            font-size: 22px;
+            font-weight: 600;
+        }
+
+        .next-btn {
+            display: none;
+        }
+
+        .next-btn.show {
+            display: inline-block;
+        }
+
+        /* =========================================================
+           TEXT INPUT
+        ========================================================= */
+
+        .memory-input,
+        .wish-input {
+            width: 100%;
+            min-height: 130px;
+
+            resize: vertical;
+
+            padding: 18px;
+
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,.12);
+
+            outline: none;
+
+            background: rgba(0,0,0,.2);
+            color: white;
+
+            font-size: 14px;
+            line-height: 1.6;
+
+            transition: border .25s ease, box-shadow .25s ease;
+        }
+
+        .memory-input:focus,
+        .wish-input:focus {
+            border-color: rgba(255,143,190,.6);
+
+            box-shadow:
+                0 0 0 4px rgba(255,143,190,.08);
+        }
+
+        .memory-input::placeholder,
+        .wish-input::placeholder {
+            color: rgba(255,255,255,.35);
+        }
+
+        /* =========================================================
+           REVEAL
+        ========================================================= */
+
+        #reveal {
+            background:
+                radial-gradient(circle at center, #22111c, #07060b 65%);
+        }
+
+        .countdown {
+            font-family: "Playfair Display", serif;
+            font-size: clamp(90px, 25vw, 190px);
+            line-height: 1;
+
+            color: #fff;
+
+            text-shadow:
+                0 0 30px rgba(255,130,180,.7),
+                0 0 80px rgba(255,80,150,.4);
+
+            animation: countdownPulse 1s ease infinite;
+        }
+
+        @keyframes countdownPulse {
+            0% {
+                transform: scale(.8);
+                opacity: .2;
+            }
+
+            50% {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(1.1);
+                opacity: 0;
+            }
+        }
+
+        .birthday-title {
+            font-family: "Playfair Display", serif;
+            font-size: clamp(38px, 9vw, 80px);
+            line-height: 1.1;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #ffd1e2,
+                    #fff,
+                    #ff9ec5
+                );
+
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+
+            animation: birthdayAppear 1.3s ease forwards;
+        }
+
+        @keyframes birthdayAppear {
+            from {
+                opacity: 0;
+                transform: translateY(30px) scale(.9);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .birthday-subtitle {
+            margin-top: 22px;
+            color: rgba(255,255,255,.65);
+            font-family: "Cormorant Garamond", serif;
+            font-size: 24px;
+        }
+
+        /* =========================================================
+           CONFETTI
+        ========================================================= */
+
+        .confetti-container {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 100;
+            overflow: hidden;
+        }
+
+        .confetti {
+            position: absolute;
+            top: -20px;
+
+            width: 8px;
+            height: 14px;
+
+            animation:
+                confettiFall linear forwards,
+                confettiSpin .8s linear infinite;
+        }
+
+        @keyframes confettiFall {
+            to {
+                transform:
+                    translateY(110vh)
+                    rotate(720deg);
+            }
+        }
+
+        @keyframes confettiSpin {
+            from {
+                margin-left: 0;
+            }
+
+            to {
+                margin-left: 20px;
+            }
+        }
+
+        /* =========================================================
+           HEARTS
+        ========================================================= */
+
+        .floating-heart {
+            position: fixed;
+            bottom: -30px;
+
+            pointer-events: none;
+            z-index: 90;
+
+            font-size: 20px;
+
+            animation:
+                heartFloat 5s ease-in forwards;
+        }
+
+        @keyframes heartFloat {
+            0% {
+                transform: translateY(0) scale(.5);
+                opacity: 0;
+            }
+
+            15% {
+                opacity: 1;
+            }
+
+            100% {
+                transform:
+                    translateY(-110vh)
+                    translateX(var(--drift))
+                    scale(1.2);
+                opacity: 0;
+            }
+        }
+
+        /* =========================================================
+           MEMORIES
+        ========================================================= */
+
+        .section-label {
+            color: #ffabc9;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-size: 11px;
+            margin-bottom: 15px;
+        }
+
+        .section-title {
+            font-family: "Cormorant Garamond", serif;
+            font-size: clamp(42px, 9vw, 70px);
+            margin-bottom: 35px;
+        }
+
+        .memories {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        .memory-card {
+            min-height: 260px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+
+            padding: 20px;
+
+            border-radius: 24px;
+            overflow: hidden;
+
+            border: 1px solid rgba(255,255,255,.1);
+
+            background:
+                linear-gradient(
+                    160deg,
+                    rgba(255,150,195,.12),
+                    rgba(100,80,150,.13)
+                );
+
+            position: relative;
+
+            transition: transform .35s ease;
+        }
+
+        .memory-card:hover {
+            transform: translateY(-8px) rotate(-1deg);
+        }
+
+        .photo-placeholder {
+            position: absolute;
+            inset: 0;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            color: rgba(255,255,255,.35);
+            font-size: 45px;
+
+            background:
+                radial-gradient(
+                    circle at center,
+                    rgba(255,150,195,.15),
+                    transparent 65%
+                );
+        }
+
+        .memory-caption {
+            position: relative;
+            z-index: 2;
+
+            padding-top: 80px;
+
+            font-family: "Cormorant Garamond", serif;
+            font-size: 23px;
+        }
+
+        /* =========================================================
+           MUSIC
+        ========================================================= */
+
+        .music-box {
+            margin-top: 35px;
+
+            padding: 22px;
+
+            border-radius: 24px;
+            border: 1px solid rgba(255,255,255,.1);
+
+            background: rgba(255,255,255,.04);
+        }
+
+        .music-status {
+            color: rgba(255,255,255,.55);
+            font-size: 13px;
+            margin-bottom: 14px;
+        }
+
+        .music-btn {
+            border: 1px solid rgba(255,255,255,.12);
+            background: rgba(255,255,255,.07);
+
+            color: white;
+
+            padding: 13px 20px;
+            border-radius: 100px;
+
+            transition: .25s ease;
+        }
+
+        .music-btn:hover {
+            background: rgba(255,140,190,.15);
+            transform: translateY(-2px);
+        }
+
+        /* =========================================================
+           FINAL MESSAGE
+        ========================================================= */
+
+        .final-card {
+            padding: clamp(28px, 7vw, 60px);
+
+            border-radius: 30px;
+
+            border: 1px solid rgba(255,255,255,.1);
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,.07),
+                    rgba(255,255,255,.025)
+                );
+
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+
+            text-align: left;
+        }
+
+        .final-card h2 {
+            font-family: "Cormorant Garamond", serif;
+            font-size: clamp(42px, 9vw, 65px);
+            margin-bottom: 28px;
+        }
+
+        .final-card p {
+            color: rgba(255,255,255,.72);
+            line-height: 1.9;
+            font-size: 15px;
+            margin-bottom: 18px;
+        }
+
+        .signature {
+            margin-top: 30px;
+
+            color: #ffabc9 !important;
+
+            font-family: "Cormorant Garamond", serif;
+            font-size: 23px !important;
+        }
+
+        /* =========================================================
+           LAST SCREEN
+        ========================================================= */
+
+        .made-for {
+            font-family: "Cormorant Garamond", serif;
+            font-size: clamp(42px, 9vw, 70px);
+            margin-bottom: 15px;
+        }
+
+        .date {
+            color: #ffabc9;
+            letter-spacing: 4px;
+            font-size: 11px;
+            text-transform: uppercase;
+        }
+
+        .replay {
+            margin-top: 35px;
+        }
+
+        /* =========================================================
+           RESPONSIVE
+        ========================================================= */
+
+        @media (max-width: 650px) {
+
+            .screen {
+                padding: 18px;
+            }
+
+            .question-card {
+                border-radius: 24px;
+            }
+
+            .memories {
+                grid-template-columns: 1fr;
+            }
+
+            .memory-card {
+                min-height: 230px;
+            }
+
+            .intro-text {
+                font-size: 14px;
+            }
+
+            .final-card p {
+                font-size: 14px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- Background -->
+    <div class="background-glow">
+        <div class="glow one"></div>
+        <div class="glow two"></div>
+        <div class="glow three"></div>
+    </div>
+
+    <!-- Confetti -->
+    <div class="confetti-container" id="confetti"></div>
+
+    <!-- =========================================================
+         SCREEN 1 — MYSTERY
+    ========================================================= -->
+
+    <section class="screen active" id="intro">
+
+        <div class="content">
+
+            <div class="moon"></div>
+
+            <div class="eyebrow">
+                A little something for you
+            </div>
+
+            <h1 class="intro-title">
+                Hey, <span>Rafia.</span>
+            </h1>
+
+            <p class="intro-text">
+                I made something for you.
+                <br><br>
+                But there's one rule...
+                <br>
+                You have to go through the whole thing. 👀
+            </p>
+
+            <button class="primary-btn" onclick="startExperience()">
+                Start the surprise →
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         QUESTIONS
+    ========================================================= -->
+
+    <section class="screen" id="questions">
+
+        <div class="content">
+
+            <div class="question-card">
+
+                <div class="question-number" id="questionNumber">
+                    Question 1 of 10
+                </div>
+
+                <h2 class="question-title" id="questionText"></h2>
+
+                <div id="answerArea" class="answers"></div>
+
+                <div class="response" id="response"></div>
+
+                <button
+                    class="primary-btn next-btn"
+                    id="nextButton"
+                    onclick="nextQuestion()">
+                    Next →
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         REVEAL
+    ========================================================= -->
+
+    <section class="screen" id="reveal">
+
+        <div class="content">
+
+            <div id="countdownArea">
+
+                <div class="countdown" id="countdown">
+                    3
+                </div>
+
+            </div>
+
+            <div id="birthdayArea" style="display:none;">
+
+                <h1 class="birthday-title">
+                    🎉 HAPPY BIRTHDAY RAFIA 🎉
+                </h1>
+
+                <p class="birthday-subtitle">
+                    This whole thing was made specially for you. ❤️
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         MEMORIES
+    ========================================================= -->
+
+    <section class="screen" id="memoriesScreen">
+
+        <div class="content">
+
+            <div class="section-label">
+                little moments
+            </div>
+
+            <h1 class="section-title">
+                A few memories... 📸
+            </h1>
+
+            <div class="memories">
+
+                <div class="memory-card">
+                    <div class="photo-placeholder">
+                        📷
+                    </div>
+
+                    <div class="memory-caption">
+                        One of my favourite memories ❤️
+                    </div>
+                </div>
+
+                <div class="memory-card">
+                    <div class="photo-placeholder">
+                        📷
+                    </div>
+
+                    <div class="memory-caption">
+                        Still makes me smile 😭
+                    </div>
+                </div>
+
+                <div class="memory-card">
+                    <div class="photo-placeholder">
+                        📷
+                    </div>
+
+                    <div class="memory-caption">
+                        How did we even get here? 💀
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="music-box">
+
+                <div class="music-status" id="musicStatus">
+                    A little music for the moment 🎵
+                </div>
+
+                <button
+                    class="music-btn"
+                    onclick="toggleMusic()"
+                    id="musicButton">
+                    🎵 Play something for you
+                </button>
+
+                <!--
+                    Later we can add your properly licensed /
+                    royalty-free audio file here.
+                -->
+
+                <audio id="birthdayMusic" loop>
+                    <!-- Put your audio file here later -->
+                </audio>
+
+            </div>
+
+            <button
+                class="primary-btn"
+                onclick="showScreen('final')">
+                Continue →
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         FINAL MESSAGE
+    ========================================================= -->
+
+    <section class="screen" id="final">
+
+        <div class="content">
+
+            <div class="section-label">
+                one last thing...
+            </div>
+
+            <div class="final-card">
+
+                <h2>
+                    Rafia, ❤️
+                </h2>
+
+                <p>
+                    Honestly, I still don't know how someone who is this far away
+                    managed to become such an important part of my life. 😭
+                </p>
+
+                <p>
+                    You've somehow managed to make random days better,
+                    make boring conversations interesting, tolerate my nonsense,
+                    and somehow still haven't blocked me...
+                    which honestly deserves an award. 💀
+                </p>
+
+                <p>
+                    But jokes aside, I'm genuinely really glad I met you.
+                </p>
+
+                <p>
+                    I hope this new year of your life brings you happiness,
+                    good memories, peace, success, and all the little things
+                    you've been wishing for.
+                </p>
+
+                <p>
+                    Keep smiling, keep being yourself,
+                    and please don't become too mature because I still need
+                    someone to annoy. 😭
+                </p>
+
+                <p>
+                    Happy Birthday, Rafia. ❤️
+                </p>
+
+                <p>
+                    I hope you liked this little surprise.
+                    <br>
+                    And remember...
+                    <br>
+                    You were worth all the effort. 🫶
+                </p>
+
+                <p class="signature">
+                    — From someone who is probably never going to stop
+                    annoying you 😂
+                </p>
+
+            </div>
+
+            <button
+                class="primary-btn"
+                onclick="showScreen('last')">
+                One last surprise →
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         LAST SCREEN
+    ========================================================= -->
+
+    <section class="screen" id="last">
+
+        <div class="content">
+
+            <div class="moon"></div>
+
+            <div class="made-for">
+                Made specially for Rafia ♡
+            </div>
+
+            <div class="date">
+                September 2026
+            </div>
+
+            <button
+                class="primary-btn replay"
+                onclick="replayExperience()">
+                ↻ Replay the surprise
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <script>
+
+        /* =========================================================
+           QUESTIONS DATA
+        ========================================================= */
+
+        const questions = [
+
+            {
+                question:
+                    "Do you know how special you actually are to me? ❤️",
+
+                answers: [
+                    "Obviously 😌",
+                    "Maybe? 👀",
+                    "I don't think so..."
+                ],
+
+                response:
+                    "Well... I'm here to remind you. ❤️"
+            },
+
+            {
+                question:
+                    "What's one thing about our friendship that you secretly love the most?",
+
+                answers: [
+                    "Our random conversations",
+                    "Our stupid jokes 😭",
+                    "The fact that we can talk about anything",
+                    "Honestly... everything"
+                ],
+
+                response:
+                    "Whatever you picked, I hope we never lose that. 🫶"
+            },
+
+            {
+                question:
+                    "Do you realize how many random days you've made better just by being there?",
+
+                answers: [
+                    "Yes 😌",
+                    "Maybe",
+                    "No way 😭"
+                ],
+
+                response:
+                    "Well, now you know."
+            },
+
+            {
+                question:
+                    "If distance didn't exist for one day, what would we do first?",
+
+                answers: [
+                    "Go somewhere random",
+                    "Talk for hours",
+                    "Take a million pictures 📸",
+                    "Cause absolute chaos 💀"
+                ],
+
+                response:
+                    "Honestly... probably all four. 😭"
+            },
+
+            {
+                question:
+                    "Who is more likely to start a completely unnecessary argument?",
+
+                answers: [
+                    "Me 😭",
+                    "You 💀",
+                    "Both of us",
+                    "Depends on the day..."
+                ],
+
+                response:
+                    "Correct answer: definitely both of us. 😂"
+            },
+
+            {
+                question:
+                    "What's one memory or conversation between us that you'd never want to forget?",
+
+                input: true,
+
+                placeholder:
+                    "Write your answer here...",
+
+                button:
+                    "Keep this memory →",
+
+                response:
+                    "Some memories are worth keeping forever. ❤️"
+            },
+
+            {
+                question:
+                    "Do you know that I'm genuinely glad I met you?",
+
+                answers: [
+                    "Yes ❤️",
+                    "Now I do",
+                    "You better be 😭"
+                ],
+
+                response:
+                    "I really am. No jokes this time."
+            },
+
+            {
+                question:
+                    "If we could meet right now, where would we go?",
+
+                answers: [
+                    "Somewhere peaceful 🌙",
+                    "Somewhere completely random 😂",
+                    "Food first. Obviously.",
+                    "Wherever, as long as we're together"
+                ],
+
+                response:
+                    "Okay, that sounds like a plan. 👀"
+            },
+
+            {
+                question:
+                    "What's one thing you want this new year of your life to bring you?",
+
+                input: true,
+
+                placeholder:
+                    "Make a wish...",
+
+                button:
+                    "Save my wish ✨",
+
+                response:
+                    "I hope you get every bit of it."
+            },
+
+            {
+                question:
+                    "Okay Rafia... Are you ready for your actual birthday surprise? 🎁",
+
+                answers: [
+                    "YES, SHOW ME ❤️",
+                    "I'm scared 😭"
+                ],
+
+                response:
+                    "Too late. We're doing this. 😂"
+            }
+
+        ];
+
+
+        /* =========================================================
+           STATE
+        ========================================================= */
+
+        let currentQuestion = 0;
+
+
+        /* =========================================================
+           SCREEN SWITCHER
+        ========================================================= */
+
+        function showScreen(id) {
+
+            document
+                .querySelectorAll(".screen")
+                .forEach(screen => {
+                    screen.classList.remove("active");
+                });
+
+            const target = document.getElementById(id);
+
+            if (target) {
+                setTimeout(() => {
+                    target.classList.add("active");
+                }, 50);
+            }
+        }
+
+
+        /* =========================================================
+           START
+        ========================================================= */
+
+        function startExperience() {
+
+            currentQuestion = 0;
+
+            showScreen("questions");
+
+            setTimeout(() => {
+                loadQuestion();
+            }, 450);
+        }
+
+
+        /* =========================================================
+           LOAD QUESTION
+        ========================================================= */
+
+        function loadQuestion() {
+
+            const data = questions[currentQuestion];
+
+            document.getElementById("questionNumber").textContent =
+                `Question ${currentQuestion + 1} of ${questions.length}`;
+
+            document.getElementById("questionText").textContent =
+                data.question;
+
+            const answerArea =
+                document.getElementById("answerArea");
+
+            const response =
+                document.getElementById("response");
+
+            const nextButton =
+                document.getElementById("nextButton");
+
+            answerArea.innerHTML = "";
+            response.textContent = "";
+            nextButton.classList.remove("show");
+
+            /* Input question */
+
+            if (data.input) {
+
+                const textarea =
+                    document.createElement("textarea");
+
+                textarea.className =
+                    currentQuestion === 5
+                    ? "memory-input"
+                    : "wish-input";
+
+                textarea.placeholder =
+                    data.placeholder;
+
+                textarea.id = "userAnswer";
+
+                answerArea.appendChild(textarea);
+
+                const saveButton =
+                    document.createElement("button");
+
+                saveButton.className =
+                    "primary-btn";
+
+                saveButton.textContent =
+                    data.button;
+
+                saveButton.onclick = function() {
+
+                    const input =
+                        document.getElementById("userAnswer");
+
+                    if (input.value.trim() === "") {
+
+                        input.style.borderColor =
+                            "rgba(255,120,170,.7)";
+
+                        input.placeholder =
+                            "You have to write something 😭";
+
+                        return;
+                    }
+
+                    response.textContent =
+                        data.response;
+
+                    saveButton.style.display =
+                        "none";
+
+                    nextButton.classList.add("show");
+                };
+
+                answerArea.appendChild(saveButton);
+
+            }
+
+            /* Normal answers */
+
+            else {
+
+                data.answers.forEach(answer => {
+
+                    const button =
+                        document.createElement("button");
+
+                    button.className =
+                        "answer-btn";
+
+                    button.textContent =
+                        answer;
+
+                    button.onclick = function() {
+
+                        const allButtons =
+                            answerArea.querySelectorAll(
+                                ".answer-btn"
+                            );
+
+                        allButtons.forEach(btn => {
+                            btn.disabled = true;
+                            btn.style.opacity = ".55";
+                        });
+
+                        button.style.opacity = "1";
+                        button.style.background =
+                            "rgba(255,140,190,.14)";
+
+                        response.textContent =
+                            data.response;
+
+                        nextButton.classList.add("show");
+
+                    };
+
+                    answerArea.appendChild(button);
+
+                });
+
+            }
+        }
+
+
+        /* =========================================================
+           NEXT QUESTION
+        ========================================================= */
+
+        function nextQuestion() {
+
+            if (currentQuestion <
+                questions.length - 1) {
+
+                currentQuestion++;
+
+                animateQuestionChange();
+
+            } else {
+
+                startReveal();
+
+            }
+        }
+
+
+        /* =========================================================
+           QUESTION TRANSITION
+        ========================================================= */
+
+        function animateQuestionChange() {
+
+            const card =
+                document.querySelector(".question-card");
+
+            card.style.opacity = "0";
+            card.style.transform =
+                "translateY(15px) scale(.98)";
+
+            setTimeout(() => {
+
+                loadQuestion();
+
+                card.style.opacity = "1";
+                card.style.transform =
+                    "translateY(0) scale(1)";
+
+            }, 350);
+        }
+
+
+        /* =========================================================
+           BIRTHDAY REVEAL
+        ========================================================= */
+
+        function startReveal() {
+
+            showScreen("reveal");
+
+            const countdown =
+                document.getElementById("countdown");
+
+            const countdownArea =
+                document.getElementById("countdownArea");
+
+            const birthdayArea =
+                document.getElementById("birthdayArea");
+
+            birthdayArea.style.display = "none";
+            countdownArea.style.display = "block";
+
+            let number = 3;
+
+            countdown.textContent = number;
+
+            const timer =
+                setInterval(() => {
+
+                    number--;
+
+                    if (number > 0) {
+
+                        countdown.textContent =
+                            number;
+
+                    } else {
+
+                        clearInterval(timer);
+
+                        countdownArea.style.display =
+                            "none";
+
+                        birthdayArea.style.display =
+                            "block";
+
+                        launchCelebration();
+
+                        setTimeout(() => {
+
+                            showScreen(
+                                "memoriesScreen"
+                            );
+
+                        }, 5000);
+                    }
+
+                }, 1200);
+        }
+
+
+        /* =========================================================
+           CONFETTI
+        ========================================================= */
+
+        function launchCelebration() {
+
+            createConfetti();
+            createHearts();
+
+            setTimeout(createConfetti, 1000);
+            setTimeout(createHearts, 1500);
+        }
+
+
+        function createConfetti() {
+
+            const container =
+                document.getElementById("confetti");
+
+            const pieces = 100;
+
+            for (let i = 0; i < pieces; i++) {
+
+                const piece =
+                    document.createElement("div");
+
+                piece.className = "confetti";
+
+                piece.style.left =
+                    Math.random() * 100 + "%";
+
+                piece.style.animationDuration =
+                    (2.5 + Math.random() * 3) + "s";
+
+                piece.style.animationDelay =
+                    Math.random() * 1.5 + "s";
+
+                const size =
+                    5 + Math.random() * 8;
+
+                piece.style.width =
+                    size + "px";
+
+                piece.style.height =
+                    size * 1.7 + "px";
+
+                const colors = [
+                    "#ff9fc5",
+                    "#ffd6e5",
+                    "#ffffff",
+                    "#b9a6ff",
+                    "#ffd580"
+                ];
+
+                piece.style.background =
+                    colors[
+                        Math.floor(
+                            Math.random() * colors.length
+                        )
+                    ];
+
+                piece.style.transform =
+                    `rotate(${Math.random() * 360}deg)`;
+
+                container.appendChild(piece);
+
+                setTimeout(() => {
+                    piece.remove();
+                }, 6500);
+            }
+        }
+
+
+        /* =========================================================
+           FLOATING HEARTS
+        ========================================================= */
+
+        function createHearts() {
+
+            const hearts = [
+                "❤️",
+                "💗",
+                "💖",
+                "💕",
+                "🫶",
+                "✨"
+            ];
+
+            for (let i = 0; i < 25; i++) {
+
+                const heart =
+                    document.createElement("div");
+
+                heart.className =
+                    "floating-heart";
+
+                heart.textContent =
+                    hearts[
+                        Math.floor(
+                            Math.random() * hearts.length
+                        )
+                    ];
+
+                heart.style.left =
+                    Math.random() * 100 + "%";
+
+                heart.style.setProperty(
+                    "--drift",
+                    (Math.random() * 160 - 80) + "px"
+                );
+
+                heart.style.animationDuration =
+                    (4 + Math.random() * 3) + "s";
+
+                heart.style.animationDelay =
+                    Math.random() * 2 + "s";
+
+                document.body.appendChild(heart);
+
+                setTimeout(() => {
+                    heart.remove();
+                }, 8000);
+            }
+        }
+
+
+        /* =========================================================
+           MUSIC
+        ========================================================= */
+
+        function toggleMusic() {
+
+            const music =
+                document.getElementById("birthdayMusic");
+
+            const button =
+                document.getElementById("musicButton");
+
+            const status =
+                document.getElementById("musicStatus");
+
+            /*
+                Music file will be added later.
+            */
+
+            if (!music.src) {
+
+                status.textContent =
+                    "Your special Punjabi/chill track will go here 🎵";
+
+                button.textContent =
+                    "🎵 Music coming soon";
+
+                return;
+            }
+
+            if (music.paused) {
+
+                music.play();
+
+                button.textContent =
+                    "⏸ Pause the music";
+
+                status.textContent =
+                    "🎵 Now playing...";
+
+            } else {
+
+                music.pause();
+
+                button.textContent =
+                    "🎵 Play something for you";
+
+                status.textContent =
+                    "Music paused";
+            }
+        }
+
+
+        /* =========================================================
+           REPLAY
+        ========================================================= */
+
+        function replayExperience() {
+
+            currentQuestion = 0;
+
+            document.getElementById("confetti").innerHTML = "";
+
+            document
+                .querySelectorAll(".floating-heart")
+                .forEach(el => el.remove());
+
+            showScreen("intro");
+        }
+
+
+        /* =========================================================
+           SMALL SMOOTHNESS
+        ========================================================= */
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            function() {
+
+                document
+                    .querySelectorAll(".screen")
+                    .forEach(screen => {
+
+                        screen.style.willChange =
+                            "opacity, transform";
+
+                    });
+
+            }
+        );
+
+    </script>
+
+</body>
+</html>

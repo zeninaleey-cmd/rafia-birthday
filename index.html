@@ -1,1 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <title>For Rafia ❤️</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      background: #090914;
+      color: white;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .screen {
+      width: 100%;
+      max-width: 500px;
+      min-height: 100vh;
+      padding: 30px 22px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      animation: fadeIn 1s ease;
+    }
+
+    .moon {
+      font-size: 55px;
+      margin-bottom: 25px;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    h1 {
+      font-size: 32px;
+      margin-bottom: 18px;
+    }
+
+    p {
+      color: #c9c9d8;
+      font-size: 17px;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+
+    .highlight {
+      color: #ff8fb3;
+    }
+
+    button {
+      border: none;
+      border-radius: 30px;
+      padding: 15px 25px;
+      margin: 7px;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+      color: white;
+      background: linear-gradient(135deg, #ff4f81, #a855f7);
+      box-shadow: 0 8px 25px rgba(255, 79, 129, 0.25);
+      transition: 0.25s;
+    }
+
+    button:active {
+      transform: scale(0.95);
+    }
+
+    .question {
+      font-size: 27px;
+      line-height: 1.35;
+      margin-bottom: 25px;
+    }
+
+    .answers {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .answers button {
+      width: 100%;
+      margin: 0;
+      background: #171727;
+      border: 1px solid #33334a;
+      box-shadow: none;
+    }
+
+    .answers button:hover {
+      background: #24243a;
+    }
+
+    .response {
+      margin-top: 25px;
+      color: #ffabc5;
+      font-size: 18px;
+      line-height: 1.5;
+      animation: fadeIn 0.7s ease;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(15px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- MYSTERY SCREEN -->
+  <div class="screen" id="mysteryScreen">
+
+    <div class="moon">🌙</div>
+
+    <h1>I made something <span class="highlight">for you.</span></h1>
+
+    <p>
+      But there's one rule...<br><br>
+      You have to go through the whole thing 👀
+    </p>
+
+    <button onclick="startSurprise()">
+      Start the surprise →
+    </button>
+
+  </div>
+
+
+  <!-- QUESTION 1 -->
+  <div class="screen hidden" id="questionScreen">
+
+    <p>Before we start...</p>
+
+    <h1 class="question">
+      Do you know how special you actually are to me? ❤️
+    </h1>
+
+    <div class="answers">
+
+      <button onclick="answerQuestion()">
+        Obviously 😌
+      </button>
+
+      <button onclick="answerQuestion()">
+        Maybe? 👀
+      </button>
+
+      <button onclick="answerQuestion()">
+        I don't think so...
+      </button>
+
+    </div>
+
+    <div id="response" class="response hidden">
+      Well... I'm here to remind you. ❤️
+      <br><br>
+
+      <button onclick="nextStep()">
+        Next →
+      </button>
+    </div>
+
+  </div>
+
+
+  <script>
+
+    function startSurprise() {
+      document.getElementById("mysteryScreen").classList.add("hidden");
+      document.getElementById("questionScreen").classList.remove("hidden");
+    }
+
+    function answerQuestion() {
+      document.getElementById("response").classList.remove("hidden");
+    }
+
+    function nextStep() {
+      alert("Question 2 is coming next ❤️");
+    }
+
+  </script>
+
+</body>
+        </html>

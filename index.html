@@ -640,4 +640,584 @@ const questions = [
 
 
   {
-    emoji:
+    emoji: "🌙",
+
+    text: "If distance didn't exist for one day, what would we do first?",
+
+    options: [
+      ["Go somewhere random", "Of course we'd have absolutely no plan. 😂", "🗺️"],
+      ["Talk for hours", "And somehow we'd still have more to talk about. 😭", "💬"],
+      ["Take a million pictures 📸", "A million? You'd probably make it two million. 😂📸", "📸"],
+      ["Cause absolute chaos 💀", "I KNEW you'd choose this one. 💀😂", "💀"]
+    ]
+  },
+
+
+  {
+    emoji: "😂",
+
+    text: "Who is more likely to start a completely unnecessary argument?",
+
+    options: [
+      ["Me 😭", "At least you're honest. I'll give you that. 😂", "👏"],
+      ["You 💀", "EXCUSE ME?? 😭 You really clicked that with confidence?", "😤"],
+      ["Both of us", "Finally... some honesty. 💀😂", "🤝"],
+      ["Depends on the day...", "Smart answer. You're learning how to survive us. 😭", "🧠"]
+    ]
+  },
+
+
+  {
+    emoji: "📝",
+
+    text: "What's one memory or conversation between us that you'd never want to forget?",
+
+    textBox: true,
+
+    placeholder: "Write your answer here...",
+
+    response: "Okay... that one is getting saved in the imaginary memory vault. ❤️",
+
+    reaction: "🔐"
+  },
+
+
+  {
+    emoji: "❤️",
+
+    text: "Do you know that I'm genuinely glad I met you?",
+
+    options: [
+      ["Yes ❤️", "Good. Because I really mean it. ❤️", "❤️"],
+      ["Now I do", "Then mission accomplished. 🫶", "✨"],
+      ["You better be 😭", "Trust me, I am. 😭❤️", "😤❤️"]
+    ]
+  },
+
+
+  {
+    emoji: "🌙",
+
+    text: "If we could meet right now, where would we go?",
+
+    options: [
+      ["Somewhere peaceful 🌙", "Honestly... that sounds kinda perfect. 🌙✨", "🌙"],
+      ["Somewhere completely random 😂", "No destination. Just vibes. 😂", "🚗"],
+      ["Food first. Obviously.", "FINALLY, someone with priorities. 😂🍕", "🍕"],
+      ["Wherever, as long as we're together", "Okay... you didn't have to make that this cute. 🥹❤️", "🥹"]
+    ]
+  },
+
+
+  {
+    emoji: "🌟",
+
+    text: "What's one thing you want this new year of your life to bring you?",
+
+    textBox: true,
+
+    placeholder: "Make a wish...",
+
+    response: "Wish saved. Now let's hope this year is extra kind to you. ✨❤️",
+
+    reaction: "🌟"
+  }
+
+];
+
+
+
+let currentQuestion = 0;
+
+
+
+function hideAll() {
+
+  document
+    .querySelectorAll(".screen")
+    .forEach(screen => {
+      screen.classList.remove("active");
+    });
+
+}
+
+
+
+function startSurprise() {
+
+  currentQuestion = 0;
+
+  showQuestion();
+
+}
+
+
+
+function showQuestion() {
+
+  hideAll();
+
+  const screen =
+    document.getElementById("questionScreen");
+
+  screen.classList.add("active");
+
+  const q = questions[currentQuestion];
+
+  document.getElementById("questionEmoji").textContent =
+    q.emoji;
+
+  document.getElementById("questionText").textContent =
+    q.text;
+
+  const options =
+    document.getElementById("questionOptions");
+
+  const textArea =
+    document.getElementById("textAnswerArea");
+
+  const reaction =
+    document.getElementById("reactionArea");
+
+  options.innerHTML = "";
+  textArea.innerHTML = "";
+  reaction.innerHTML = "";
+
+
+  if (q.textBox) {
+
+    textArea.innerHTML = `
+
+      <textarea
+        id="answerInput"
+        placeholder="${q.placeholder}">
+      </textarea>
+
+      <button onclick="answerTextQuestion()">
+        ${currentQuestion === 5
+          ? "Keep this memory →"
+          : "Save my wish ✨"}
+      </button>
+
+    `;
+
+  }
+
+  else {
+
+    q.options.forEach(option => {
+
+      const button =
+        document.createElement("button");
+
+      button.textContent = option[0];
+
+      button.onclick = function() {
+
+        showReaction(
+          option[1],
+          option[2]
+        );
+
+      };
+
+      options.appendChild(button);
+
+    });
+
+  }
+
+}
+
+
+
+function showReaction(text, emoji) {
+
+  const options =
+    document.getElementById("questionOptions");
+
+  options.innerHTML = "";
+
+  const reaction =
+    document.getElementById("reactionArea");
+
+  reaction.innerHTML = `
+
+    <div
+      class="big-emoji reaction-pop">
+      ${emoji}
+    </div>
+
+    <p>
+      ${text}
+    </p>
+
+    <button onclick="nextQuestion()">
+      Next →
+    </button>
+
+  `;
+
+}
+
+
+
+function answerTextQuestion() {
+
+  const input =
+    document.getElementById("answerInput");
+
+  const answer =
+    input.value.trim();
+
+  if (!answer) {
+
+    input.placeholder =
+      "You have to write something first 😭";
+
+    input.focus();
+
+    return;
+
+  }
+
+  const q = questions[currentQuestion];
+
+  showReaction(
+    q.response,
+    q.reaction
+  );
+
+}
+
+
+
+function nextQuestion() {
+
+  currentQuestion++;
+
+  if (currentQuestion < questions.length) {
+
+    showQuestion();
+
+  }
+
+  else {
+
+    showFunQuestion();
+
+  }
+
+}
+
+
+
+function showFunQuestion() {
+
+  hideAll();
+
+  document
+    .getElementById("funQuestion")
+    .classList.add("active");
+
+}
+
+
+
+let noClicks = 0;
+
+
+
+function moveNo() {
+
+  const noBtn =
+    document.getElementById("noBtn");
+
+  const message =
+    document.getElementById("pressMessage");
+
+  noClicks++;
+
+
+  if (noClicks === 1) {
+
+    noBtn.style.transform =
+      "translateX(100px)";
+
+    message.textContent =
+      "Nice try 😂";
+
+  }
+
+
+  else if (noClicks === 2) {
+
+    noBtn.style.transform =
+      "translateX(-110px)";
+
+    message.textContent =
+      "You really tried again?! 😭";
+
+  }
+
+
+  else if (noClicks === 3) {
+
+    noBtn.style.transform =
+      "translateY(80px)";
+
+    message.textContent =
+      "Okay... ONE LAST TIME 💀";
+
+  }
+
+
+  else {
+
+    noBtn.remove();
+
+    const yesBtn =
+      document.querySelector(".yes-btn");
+
+    yesBtn.classList.add("big-yes");
+
+    message.innerHTML =
+      "👉 Press this, press this! 👈<br>" +
+      "😭 COME ON, PRESS IT! ❤️";
+
+  }
+
+
+  message.classList.remove("reaction-pop");
+
+  void message.offsetWidth;
+
+  message.classList.add("reaction-pop");
+
+}
+
+
+
+function finalYes() {
+
+  startCountdown();
+
+}
+
+
+
+function startCountdown() {
+
+  hideAll();
+
+  const screen =
+    document.getElementById("countdownScreen");
+
+  screen.classList.add("active");
+
+  const number =
+    document.getElementById("countdownNumber");
+
+  let count = 3;
+
+  number.textContent = count;
+
+  const timer =
+    setInterval(() => {
+
+      count--;
+
+      if (count > 0) {
+
+        number.classList.remove("reaction-pop");
+
+        void number.offsetWidth;
+
+        number.classList.add("reaction-pop");
+
+        number.textContent = count;
+
+      }
+
+      else {
+
+        clearInterval(timer);
+
+        showBirthday();
+
+      }
+
+    }, 1000);
+
+}
+
+
+
+function showBirthday() {
+
+  hideAll();
+
+  document
+    .getElementById("birthdayScreen")
+    .classList.add("active");
+
+  createHearts();
+
+  createStars();
+
+}
+
+
+
+function showMemories() {
+
+  hideAll();
+
+  document
+    .getElementById("memoriesScreen")
+    .classList.add("active");
+
+}
+
+
+
+function showMusic() {
+
+  hideAll();
+
+  document
+    .getElementById("musicScreen")
+    .classList.add("active");
+
+}
+
+
+
+function playMusic() {
+
+  alert(
+    "Music can be added here later with a properly licensed track. 🎵"
+  );
+
+}
+
+
+
+function showFinal() {
+
+  hideAll();
+
+  document
+    .getElementById("finalScreen")
+    .classList.add("active");
+
+  createHearts();
+
+}
+
+
+
+function createHearts() {
+
+  for (let i = 0; i < 18; i++) {
+
+    setTimeout(() => {
+
+      const heart =
+        document.createElement("div");
+
+      heart.className = "heart";
+
+      heart.textContent =
+        ["❤️","💖","💕","🫶"][Math.floor(
+          Math.random() * 4
+        )];
+
+      heart.style.left =
+        Math.random() * 100 + "vw";
+
+      heart.style.animationDuration =
+        (3 + Math.random() * 3) + "s";
+
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 6000);
+
+    }, i * 180);
+
+  }
+
+}
+
+
+
+function createStars() {
+
+  for (let i = 0; i < 25; i++) {
+
+    setTimeout(() => {
+
+      const star =
+        document.createElement("div");
+
+      star.className = "star";
+
+      star.textContent =
+        ["✨","⭐","🌟"][Math.floor(
+          Math.random() * 3
+        )];
+
+      star.style.left =
+        Math.random() * 100 + "vw";
+
+      star.style.top =
+        Math.random() * 100 + "vh";
+
+      document.body.appendChild(star);
+
+      setTimeout(() => {
+        star.remove();
+      }, 3000);
+
+    }, i * 100);
+
+  }
+
+}
+
+
+
+function restart() {
+
+  noClicks = 0;
+
+  const oldNo =
+    document.getElementById("noBtn");
+
+  if (!oldNo) {
+
+    location.reload();
+
+    return;
+
+  }
+
+  oldNo.style.transform = "none";
+
+  const message =
+    document.getElementById("pressMessage");
+
+  message.innerHTML = "";
+
+  location.reload();
+
+}
+
+
+
+</script>
+
+</body>
+</html>

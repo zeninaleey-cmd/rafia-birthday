@@ -36,7 +36,7 @@ body {
 
   text-align: center;
 
-  animation: fadeIn 0.7s ease;
+  animation: screenIn 0.7s ease;
 }
 
 .hidden {
@@ -110,10 +110,27 @@ button:hover {
 }
 
 .response {
-  margin-top: 20px;
+  margin-top: 22px;
   color: #ffabc6;
   font-size: 18px;
   line-height: 1.5;
+  animation: responseIn 0.5s ease;
+}
+
+.reaction {
+  font-size: 55px;
+  margin-bottom: 10px;
+  display: inline-block;
+}
+
+.reactionText {
+  color: #ffabc6;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.nextButton {
+  margin-top: 18px;
 }
 
 textarea {
@@ -148,7 +165,7 @@ textarea::placeholder {
 
 .countdown {
   font-size: 80px;
-  animation: zoom 1s ease;
+  animation: countdownPop 1s ease;
 }
 
 .birthday {
@@ -159,17 +176,20 @@ textarea::placeholder {
 
 .heart {
   position: fixed;
-  bottom: -30px;
+  bottom: -40px;
   font-size: 20px;
   animation: rise 5s linear forwards;
   pointer-events: none;
+  z-index: 20;
 }
 
 .star {
   position: fixed;
   color: white;
+  font-size: 18px;
   animation: twinkle 2s infinite alternate;
   pointer-events: none;
+  z-index: 1;
 }
 
 .memory {
@@ -205,7 +225,6 @@ textarea::placeholder {
   max-height: 70vh;
   overflow-y: auto;
   text-align: left;
-
   padding: 5px;
 }
 
@@ -213,7 +232,14 @@ textarea::placeholder {
   color: #d7d7e2;
 }
 
-@keyframes fadeIn {
+.reaction-area {
+  width: 100%;
+  animation: reactionAppear 0.6s ease;
+}
+
+/* Screen transition */
+
+@keyframes screenIn {
   from {
     opacity: 0;
     transform: translateY(20px);
@@ -225,8 +251,10 @@ textarea::placeholder {
   }
 }
 
+/* Cute floating moon */
+
 @keyframes float {
-  0%,100% {
+  0%, 100% {
     transform: translateY(0);
   }
 
@@ -235,9 +263,121 @@ textarea::placeholder {
   }
 }
 
-@keyframes zoom {
+/* Reaction */
+
+@keyframes reactionAppear {
+  0% {
+    opacity: 0;
+    transform: scale(0.4) rotate(-8deg);
+  }
+
+  70% {
+    transform: scale(1.15) rotate(3deg);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0);
+  }
+}
+
+/* Angry */
+
+.angry {
+  animation: angry 0.5s ease;
+}
+
+@keyframes angry {
+  0%,100% {
+    transform: translateX(0);
+  }
+
+  20% {
+    transform: translateX(-8px);
+  }
+
+  40% {
+    transform: translateX(8px);
+  }
+
+  60% {
+    transform: translateX(-6px);
+  }
+
+  80% {
+    transform: translateX(6px);
+  }
+}
+
+/* Glasses */
+
+.glasses {
+  animation: glasses 0.7s ease;
+}
+
+@keyframes glasses {
+  0% {
+    transform: translateY(-30px) scale(0.5);
+    opacity: 0;
+  }
+
+  70% {
+    transform: translateY(5px) scale(1.1);
+  }
+
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+/* Bounce */
+
+.bounce {
+  animation: bounce 0.7s ease;
+}
+
+@keyframes bounce {
+  0%,100% {
+    transform: translateY(0);
+  }
+
+  40% {
+    transform: translateY(-20px);
+  }
+
+  70% {
+    transform: translateY(-7px);
+  }
+}
+
+/* Sparkle */
+
+.sparkle {
+  animation: sparkle 1s ease;
+}
+
+@keyframes sparkle {
+  0% {
+    transform: scale(0.3) rotate(-30deg);
+    opacity: 0;
+  }
+
+  50% {
+    transform: scale(1.3) rotate(20deg);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(1) rotate(0);
+  }
+}
+
+/* Countdown */
+
+@keyframes countdownPop {
   from {
-    transform: scale(0.3);
+    transform: scale(0.2);
     opacity: 0;
   }
 
@@ -247,14 +387,16 @@ textarea::placeholder {
   }
 }
 
+/* Birthday */
+
 @keyframes birthdayPop {
   0% {
-    transform: scale(0.4);
+    transform: scale(0.3);
     opacity: 0;
   }
 
   70% {
-    transform: scale(1.1);
+    transform: scale(1.12);
   }
 
   100% {
@@ -263,29 +405,35 @@ textarea::placeholder {
   }
 }
 
+/* Hearts */
+
 @keyframes rise {
   from {
-    transform: translateY(0);
+    transform: translateY(0) rotate(0);
     opacity: 1;
   }
 
   to {
-    transform: translateY(-110vh);
+    transform: translateY(-110vh) rotate(30deg);
     opacity: 0;
   }
 }
 
+/* Stars */
+
 @keyframes twinkle {
   from {
     opacity: 0.2;
-    transform: scale(0.8);
+    transform: scale(0.7);
   }
 
   to {
     opacity: 1;
-    transform: scale(1.2);
+    transform: scale(1.3);
   }
 }
+
+/* Memory */
 
 @keyframes cardIn {
   from {
@@ -338,7 +486,7 @@ textarea::placeholder {
 
   <div id="answers"></div>
 
-  <div id="response" class="response"></div>
+  <div id="response" class="response hidden"></div>
 
 </div>
 
@@ -421,7 +569,7 @@ textarea::placeholder {
 </div>
 
 
-<!-- FINAL MESSAGE -->
+<!-- FINAL -->
 
 <div class="screen hidden" id="final">
 
@@ -473,118 +621,311 @@ textarea::placeholder {
 
 const questions = [
 
-{
-text: "Do you know how special you actually are to me? ❤️",
-answers: [
-"Obviously 😌",
-"Maybe? 👀",
-"I don't think so..."
-],
-response: "Well... I'm here to remind you. ❤️"
-},
+/* QUESTION 1 */
 
 {
-text: "What's one thing about our friendship that you secretly love the most?",
-answers: [
-"Our random conversations",
-"Our stupid jokes 😭",
-"The fact that we can talk about anything",
-"Honestly... everything"
-],
-response: "Whatever you picked, I hope we never lose that. 🫶"
+  text: "Do you know how special you actually are to me? ❤️",
+
+  answers: [
+    {
+      text: "Obviously 😌",
+      reaction: "OHH, look who's confident today. 😎❤️",
+      emoji: "😎",
+      animation: "glasses"
+    },
+
+    {
+      text: "Maybe? 👀",
+      reaction: "Hmm... still unsure? I might have to convince you. 👀",
+      emoji: "👀",
+      animation: "sparkle"
+    },
+
+    {
+      text: "I don't think so...",
+      reaction: "Then clearly I haven't told you enough yet. ❤️",
+      emoji: "🥺",
+      animation: "bounce"
+    }
+  ]
 },
 
-{
-text: "Do you realize how many random days you've made better just by being there?",
-answers: [
-"Yes 😌",
-"Maybe",
-"No way 😭"
-],
-response: "Well, now you know. ❤️"
-},
+/* QUESTION 2 */
 
 {
-text: "If distance didn't exist for one day, what would we do first?",
-answers: [
-"Go somewhere random",
-"Talk for hours",
-"Take a million pictures 📸",
-"Cause absolute chaos 💀"
-],
-response: "Honestly... probably all four. 😭"
+  text: "What's one thing about our friendship that you secretly love the most?",
+
+  answers: [
+    {
+      text: "Our random conversations",
+      reaction: "Those random conversations really are something else. 😂",
+      emoji: "💬",
+      animation: "bounce"
+    },
+
+    {
+      text: "Our stupid jokes 😭",
+      reaction: "Our humor is actually questionable. 😭😂",
+      emoji: "😂",
+      animation: "bounce"
+    },
+
+    {
+      text: "The fact that we can talk about anything",
+      reaction: "Okay... that's actually really sweet. 🫶",
+      emoji: "🫶",
+      animation: "sparkle"
+    },
+
+    {
+      text: "Honestly... everything",
+      reaction: "Okayyy, don't make me emotional now. 😭❤️",
+      emoji: "🥹",
+      animation: "glasses"
+    }
+  ]
 },
 
-{
-text: "Who is more likely to start a completely unnecessary argument?",
-answers: [
-"Me 😭",
-"You 💀",
-"Both of us",
-"Depends on the day..."
-],
-response: "Correct answer: definitely both of us. 😂"
-},
+/* QUESTION 3 */
 
 {
-text: "What's one memory or conversation between us that you'd never want to forget?",
-textBox: true,
-placeholder: "Write your answer here...",
-button: "Keep this memory →",
-response: "Some memories are worth keeping forever. ❤️"
+  text: "Do you realize how many random days you've made better just by being there?",
+
+  answers: [
+    {
+      text: "Yes 😌",
+      reaction: "Look at you taking credit already. 😭😂",
+      emoji: "😌",
+      animation: "bounce"
+    },
+
+    {
+      text: "Maybe",
+      reaction: "Maybe? I'll accept that... for now. 👀",
+      emoji: "🤨",
+      animation: "sparkle"
+    },
+
+    {
+      text: "No way 😭",
+      reaction: "YES WAY. Don't argue with me on this one. 😭❤️",
+      emoji: "😤",
+      animation: "angry"
+    }
+  ]
 },
 
-{
-text: "Do you know that I'm genuinely glad I met you?",
-answers: [
-"Yes ❤️",
-"Now I do",
-"You better be 😭"
-],
-response: "I really am. No jokes this time."
-},
+/* QUESTION 4 */
 
 {
-text: "If we could meet right now, where would we go?",
-answers: [
-"Somewhere peaceful 🌙",
-"Somewhere completely random 😂",
-"Food first. Obviously.",
-"Wherever, as long as we're together"
-],
-response: "Okay, that sounds like a plan. 👀"
+  text: "If distance didn't exist for one day, what would we do first?",
+
+  answers: [
+    {
+      text: "Go somewhere random",
+      reaction: "Of course we'd have absolutely no plan. 😂",
+      emoji: "🗺️",
+      animation: "bounce"
+    },
+
+    {
+      text: "Talk for hours",
+      reaction: "And somehow we'd still have more to talk about. 😭",
+      emoji: "💬",
+      animation: "sparkle"
+    },
+
+    {
+      text: "Take a million pictures 📸",
+      reaction: "A million? You'd probably make it two million. 😂📸",
+      emoji: "📸",
+      animation: "glasses"
+    },
+
+    {
+      text: "Cause absolute chaos 💀",
+      reaction: "I KNEW you'd choose this one. 💀😂",
+      emoji: "💀",
+      animation: "angry"
+    }
+  ]
 },
 
-{
-text: "What's one thing you want this new year of your life to bring you?",
-textBox: true,
-placeholder: "Make a wish...",
-button: "Save my wish ✨",
-response: "I hope you get every bit of it. ❤️"
-},
+/* QUESTION 5 */
 
 {
-text: "Okay Rafia... Are you ready for your actual birthday surprise? 🎁",
-answers: [
-"YES, SHOW ME ❤️",
-"I'm scared 😭"
-],
-response: "Too late. There's no going back now. 😂❤️"
+  text: "Who is more likely to start a completely unnecessary argument?",
+
+  answers: [
+    {
+      text: "Me 😭",
+      reaction: "At least you're honest. I'll give you that. 😂",
+      emoji: "👏",
+      animation: "bounce"
+    },
+
+    {
+      text: "You 💀",
+      reaction: "EXCUSE ME?? 😭 You really clicked that with confidence?",
+      emoji: "😤",
+      animation: "angry"
+    },
+
+    {
+      text: "Both of us",
+      reaction: "Finally... some honesty. 💀😂",
+      emoji: "🤝",
+      animation: "sparkle"
+    },
+
+    {
+      text: "Depends on the day...",
+      reaction: "Smart answer. You're learning how to survive us. 😭",
+      emoji: "🧠",
+      animation: "glasses"
+    }
+  ]
+},
+
+/* QUESTION 6 */
+
+{
+  text: "What's one memory or conversation between us that you'd never want to forget?",
+
+  textBox: true,
+
+  placeholder: "Write your answer here...",
+
+  button: "Keep this memory →",
+
+  reaction: "Okay... that one is getting saved in the imaginary memory vault. ❤️",
+  emoji: "🔐",
+  animation: "sparkle"
+},
+
+/* QUESTION 7 */
+
+{
+  text: "Do you know that I'm genuinely glad I met you?",
+
+  answers: [
+    {
+      text: "Yes ❤️",
+      reaction: "Good. Because I really mean it. ❤️",
+      emoji: "❤️",
+      animation: "sparkle"
+    },
+
+    {
+      text: "Now I do",
+      reaction: "Then mission accomplished. 🫶",
+      emoji: "✨",
+      animation: "bounce"
+    },
+
+    {
+      text: "You better be 😭",
+      reaction: "Trust me, I am. Don't make me prove it. 😭",
+      emoji: "😤❤️",
+      animation: "angry"
+    }
+  ]
+},
+
+/* QUESTION 8 */
+
+{
+  text: "If we could meet right now, where would we go?",
+
+  answers: [
+    {
+      text: "Somewhere peaceful 🌙",
+      reaction: "Honestly... that sounds kinda perfect. 🌙✨",
+      emoji: "🌙",
+      animation: "sparkle"
+    },
+
+    {
+      text: "Somewhere completely random 😂",
+      reaction: "No destination. Just vibes. 😂",
+      emoji: "🚗",
+      animation: "bounce"
+    },
+
+    {
+      text: "Food first. Obviously.",
+      reaction: "FINALLY, someone with priorities. 😂🍕",
+      emoji: "🍕",
+      animation: "glasses"
+    },
+
+    {
+      text: "Wherever, as long as we're together",
+      reaction: "Okay... you didn't have to make that this cute. 🥹❤️",
+      emoji: "🥹",
+      animation: "sparkle"
+    }
+  ]
+},
+
+/* QUESTION 9 */
+
+{
+  text: "What's one thing you want this new year of your life to bring you?",
+
+  textBox: true,
+
+  placeholder: "Make a wish...",
+
+  button: "Save my wish ✨",
+
+  reaction: "Wish saved. Now let's hope this year is extra kind to you. ✨❤️",
+  emoji: "🌟",
+  animation: "sparkle"
+},
+
+/* QUESTION 10 */
+
+{
+  text: "Okay Rafia... Are you ready for your actual birthday surprise? 🎁",
+
+  answers: [
+    {
+      text: "YES, SHOW ME ❤️",
+      reaction: "THAT'S THE ENERGY I WAS WAITING FOR. 🎉❤️",
+      emoji: "🎉",
+      animation: "bounce"
+    },
+
+    {
+      text: "I'm scared 😭",
+      reaction: "Too late. There's no going back now. 😂❤️",
+      emoji: "👀",
+      animation: "glasses"
+    }
+  ]
 }
 
 ];
 
+
 let current = 0;
 
+
+/* Hide every screen */
 
 function hideAll() {
 
   document.querySelectorAll(".screen").forEach(screen => {
+
     screen.classList.add("hidden");
+
   });
 
 }
 
+
+/* Start */
 
 function start() {
 
@@ -599,6 +940,8 @@ function start() {
 }
 
 
+/* Show question */
+
 function showQuestion() {
 
   const q = questions[current];
@@ -606,7 +949,8 @@ function showQuestion() {
   document.getElementById("counter").innerText =
     `Question ${current + 1} / 10`;
 
-  document.getElementById("questionText").innerText = q.text;
+  document.getElementById("questionText").innerText =
+    q.text;
 
   const answers = document.getElementById("answers");
 
@@ -619,6 +963,8 @@ function showQuestion() {
   response.classList.add("hidden");
 
 
+  /* Text box questions */
+
   if (q.textBox) {
 
     const box = document.createElement("textarea");
@@ -629,27 +975,39 @@ function showQuestion() {
 
     answers.appendChild(box);
 
+
     const button = document.createElement("button");
 
     button.innerText = q.button;
 
-    button.onclick = () => answerQuestion();
+    button.onclick = () => {
+
+      answerTextQuestion();
+
+    };
 
     answers.appendChild(button);
 
   }
 
+
+  /* Normal questions */
+
   else {
 
-    q.answers.forEach(answer => {
+    q.answers.forEach((answer, index) => {
 
       const button = document.createElement("button");
 
       button.className = "answer";
 
-      button.innerText = answer;
+      button.innerText = answer.text;
 
-      button.onclick = () => answerQuestion();
+      button.onclick = () => {
+
+        answerQuestion(index);
+
+      };
 
       answers.appendChild(button);
 
@@ -660,24 +1018,76 @@ function showQuestion() {
 }
 
 
-function answerQuestion() {
+/* Normal answer */
+
+function answerQuestion(index) {
 
   const q = questions[current];
 
+  const selected = q.answers[index];
+
+  showReaction(
+    selected.reaction,
+    selected.emoji,
+    selected.animation
+  );
+
+}
+
+
+/* Text answer */
+
+function answerTextQuestion() {
+
+  const q = questions[current];
+
+  showReaction(
+    q.reaction,
+    q.emoji,
+    q.animation
+  );
+
+}
+
+
+/* Reaction */
+
+function showReaction(text, emoji, animation) {
+
+  const answers = document.getElementById("answers");
+
   const response = document.getElementById("response");
 
-  response.innerHTML = `
-    ${q.response}
-    <br><br>
-    <button onclick="nextQuestion()">Next →</button>
-  `;
+  answers.style.display = "none";
 
   response.classList.remove("hidden");
+
+  response.innerHTML = `
+
+    <div class="reaction-area">
+
+      <div class="reaction ${animation}">
+        ${emoji}
+      </div>
+
+      <div class="reactionText">
+        ${text}
+      </div>
+
+      <button class="nextButton" onclick="nextQuestion()">
+        Next →
+      </button>
+
+    </div>
+
+  `;
 
   createHearts();
 
 }
 
+
+/* Next question */
 
 function nextQuestion() {
 
@@ -691,22 +1101,30 @@ function nextQuestion() {
 
   }
 
+  const answers = document.getElementById("answers");
+
+  answers.style.display = "block";
+
   showQuestion();
 
 }
 
 
+/* Countdown */
+
 function startCountdown() {
 
   hideAll();
 
-  const screen = document.getElementById("countdownScreen");
+  const screen =
+    document.getElementById("countdownScreen");
 
   screen.classList.remove("hidden");
 
   let number = 3;
 
-  const countdown = document.getElementById("countdown");
+  const countdown =
+    document.getElementById("countdown");
 
   countdown.innerText = number;
 
@@ -733,11 +1151,15 @@ function startCountdown() {
 }
 
 
+/* Birthday */
+
 function showBirthday() {
 
   hideAll();
 
-  document.getElementById("birthday").classList.remove("hidden");
+  document
+    .getElementById("birthday")
+    .classList.remove("hidden");
 
   createHearts();
 
@@ -746,41 +1168,59 @@ function showBirthday() {
 }
 
 
+/* Memories */
+
 function showMemories() {
 
   hideAll();
 
-  document.getElementById("memories").classList.remove("hidden");
+  document
+    .getElementById("memories")
+    .classList.remove("hidden");
 
 }
 
+
+/* Music */
 
 function showMusic() {
 
   hideAll();
 
-  document.getElementById("music").classList.remove("hidden");
+  document
+    .getElementById("music")
+    .classList.remove("hidden");
 
 }
 
+
+/* Temporary music button */
 
 function playMusic() {
 
-  alert("Add your licensed/royalty-free music file here 🎵");
+  alert(
+    "Your licensed/royalty-free music will be added here 🎵"
+  );
 
 }
 
+
+/* Final */
 
 function showFinal() {
 
   hideAll();
 
-  document.getElementById("final").classList.remove("hidden");
+  document
+    .getElementById("final")
+    .classList.remove("hidden");
 
   createHearts();
 
 }
 
+
+/* Replay */
 
 function restart() {
 
@@ -788,49 +1228,67 @@ function restart() {
 
   hideAll();
 
-  document.getElementById("mystery").classList.remove("hidden");
+  document
+    .getElementById("mystery")
+    .classList.remove("hidden");
 
 }
 
+
+/* Floating hearts */
 
 function createHearts() {
 
   for (let i = 0; i < 8; i++) {
 
-    const heart = document.createElement("div");
+    const heart =
+      document.createElement("div");
 
     heart.className = "heart";
 
-    heart.innerText = "❤️";
+    heart.innerText =
+      Math.random() > 0.5 ? "❤️" : "💕";
 
-    heart.style.left = Math.random() * 100 + "%";
+    heart.style.left =
+      Math.random() * 100 + "%";
 
-    heart.style.animationDelay = Math.random() * 2 + "s";
+    heart.style.animationDelay =
+      Math.random() * 2 + "s";
 
     document.body.appendChild(heart);
 
-    setTimeout(() => heart.remove(), 6000);
+    setTimeout(() => {
+
+      heart.remove();
+
+    }, 6000);
 
   }
 
 }
 
 
+/* Stars */
+
 function createStars() {
 
   for (let i = 0; i < 15; i++) {
 
-    const star = document.createElement("div");
+    const star =
+      document.createElement("div");
 
     star.className = "star";
 
     star.innerText = "✦";
 
-    star.style.left = Math.random() * 100 + "%";
+    star.style.left =
+      Math.random() * 100 + "%";
 
-    star.style.top = Math.random() * 100 + "%";
+    star.style.top =
+      Math.random() * 100 + "%";
 
-    star.style.animationDelay = Math.random() * 2 + "s";
+    star.style.animationDelay =
+      Math.random() * 2 + "s";
 
     document.body.appendChild(star);
 
@@ -841,4 +1299,4 @@ function createStars() {
 </script>
 
 </body>
-</html>
+  </html>

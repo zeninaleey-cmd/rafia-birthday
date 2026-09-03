@@ -3,1124 +3,673 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Happy Birthday Rafia ♡</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<title>For Rafia ❤️</title>
 
 <style>
-
-/* =========================
-   RESET
-========================= */
-
-*{
-    box-sizing:border-box;
-}
-
-html{
-    width:100%;
-    min-height:100%;
-    scroll-behavior:smooth;
-}
-
+*{box-sizing:border-box}
 body{
-    margin:0;
-    width:100%;
-    min-height:100vh;
-    overflow:hidden;
-
-    font-family:"Quicksand",sans-serif;
-    color:#fff;
-
-    background:
-        radial-gradient(circle at 20% 20%,rgba(130,90,255,.18),transparent 30%),
-        radial-gradient(circle at 80% 70%,rgba(255,90,170,.14),transparent 32%),
-        linear-gradient(135deg,#090719,#15102c 50%,#090719);
+  margin:0;
+  background:#080812;
+  color:white;
+  font-family:Arial,sans-serif;
+  overflow:hidden;
 }
-
-/* =========================
-   BACKGROUND
-========================= */
-
-body::before{
-    content:"";
-    position:fixed;
-    inset:0;
-    pointer-events:none;
-
-    background-image:
-        radial-gradient(circle,#ffffff 1px,transparent 1px),
-        radial-gradient(circle,#ffffff 1px,transparent 1px);
-
-    background-size:90px 90px,140px 140px;
-    background-position:10px 20px,50px 80px;
-
-    opacity:.12;
-}
-
-/* =========================
-   SCREENS
-========================= */
-
 .screen{
-    position:fixed;
-    inset:0;
+  min-height:100vh;
+  display:none;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:25px;
+  animation:fade .6s ease;
+}
+.active{display:flex}
 
-    width:100%;
-    min-height:100vh;
+.box{max-width:700px;width:100%}
 
-    display:none;
-    align-items:center;
-    justify-content:center;
+h1{font-size:38px;margin-bottom:15px}
+h2{font-size:28px}
+p{font-size:18px;line-height:1.7;color:#ddd}
 
-    padding:25px;
-
-    overflow-y:auto;
-
-    z-index:1;
+button{
+  border:0;
+  padding:15px 22px;
+  margin:8px;
+  border-radius:14px;
+  background:#fff;
+  color:#111;
+  font-size:16px;
+  cursor:pointer;
+  transition:.25s;
+}
+button:hover{
+  transform:scale(1.06);
 }
 
-#opening{
-    display:flex;
+.answer{
+  display:block;
+  width:100%;
+  background:#171725;
+  color:white;
+  border:1px solid #333;
 }
-
-.screen:target{
-    display:flex;
-    animation:screenIn .55s ease both;
-}
-
-@keyframes screenIn{
-    from{
-        opacity:0;
-        transform:scale(.98);
-    }
-
-    to{
-        opacity:1;
-        transform:scale(1);
-    }
-}
-
-/* =========================
-   CARD
-========================= */
-
-.box{
-    width:min(92vw,650px);
-
-    padding:38px 30px;
-
-    border:1px solid rgba(255,255,255,.13);
-
-    border-radius:28px;
-
-    background:rgba(255,255,255,.07);
-
-    backdrop-filter:blur(18px);
-    -webkit-backdrop-filter:blur(18px);
-
-    box-shadow:
-        0 25px 80px rgba(0,0,0,.45),
-        inset 0 1px rgba(255,255,255,.08);
-
-    text-align:center;
-
-    position:relative;
-    z-index:5;
-}
-
-h1,h2{
-    font-family:"Playfair Display",serif;
-    margin-top:0;
-}
-
-h1{
-    font-size:clamp(35px,8vw,60px);
-    line-height:1.05;
-}
-
-h2{
-    font-size:clamp(27px,6vw,42px);
-    line-height:1.15;
-}
-
-p{
-    line-height:1.7;
-    font-size:16px;
-}
-
-/* =========================
-   MOON
-========================= */
-
-.moon{
-    width:110px;
-    height:110px;
-
-    margin:0 auto 25px;
-
-    border-radius:50%;
-
-    background:#fff;
-
-    box-shadow:
-        0 0 25px rgba(255,255,255,.8),
-        0 0 70px rgba(255,255,255,.25);
-
-    position:relative;
-
-    animation:moonFloat 4s ease-in-out infinite;
-}
-
-.moon::after{
-    content:"";
-
-    position:absolute;
-
-    width:110px;
-    height:110px;
-
-    border-radius:50%;
-
-    background:#0b081b;
-
-    left:30px;
-    top:-10px;
-}
-
-@keyframes moonFloat{
-    0%,100%{
-        transform:translateY(0);
-    }
-
-    50%{
-        transform:translateY(-10px);
-    }
-}
-
-/* =========================
-   SMALL TEXT
-========================= */
-
-.small{
-    opacity:.7;
-    font-size:14px;
-}
-
-.question-number{
-    color:#ff9ac2;
-    font-weight:700;
-    letter-spacing:2px;
-    text-transform:uppercase;
-    font-size:13px;
-}
-
-/* =========================
-   BUTTONS
-========================= */
-
-.btn{
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-
-    min-height:52px;
-
-    padding:14px 24px;
-
-    margin:7px;
-
-    border-radius:16px;
-
-    text-decoration:none;
-
-    color:#fff;
-
-    font-family:"Quicksand",sans-serif;
-    font-size:15px;
-    font-weight:700;
-
-    border:1px solid rgba(255,255,255,.15);
-
-    background:linear-gradient(
-        135deg,
-        rgba(255,116,174,.85),
-        rgba(130,105,255,.85)
-    );
-
-    box-shadow:
-        0 10px 30px rgba(0,0,0,.25),
-        0 0 25px rgba(255,100,180,.12);
-
-    transition:.25s ease;
-}
-
-.btn:hover{
-    transform:translateY(-3px) scale(1.02);
-
-    box-shadow:
-        0 15px 35px rgba(0,0,0,.3),
-        0 0 35px rgba(255,100,180,.22);
-}
-
-.btn.secondary{
-    background:rgba(255,255,255,.08);
-}
-
-/* =========================
-   ANSWERS
-========================= */
-
-.answers{
-    display:flex;
-    flex-direction:column;
-
-    width:100%;
-
-    max-width:500px;
-
-    margin:25px auto 0;
-}
-
-.answers .btn{
-    width:100%;
-    margin:6px 0;
-}
-
-/* =========================
-   EMOJI
-========================= */
-
-.emoji{
-    font-size:70px;
-    margin-bottom:10px;
-
-    display:block;
-}
-
-/* =========================
-   DIFFERENT REACTIONS
-========================= */
-
-.pop .emoji{
-    animation:pop .7s ease infinite alternate;
-}
-
-.bounce .emoji{
-    animation:bounce .8s ease infinite;
-}
-
-.shake .emoji{
-    animation:shake .5s ease infinite;
-}
-
-.spin .emoji{
-    animation:spin 2s linear infinite;
-}
-
-.float .emoji{
-    animation:float 2.5s ease-in-out infinite;
-}
-
-.pulse .emoji{
-    animation:pulse 1.2s ease infinite;
-}
-
-.wiggle .emoji{
-    animation:wiggle .7s ease infinite;
-}
-
-.zoom .emoji{
-    animation:zoom 1.4s ease-in-out infinite alternate;
-}
-
-.heart .emoji{
-    animation:heart 1s ease infinite;
-}
-
-@keyframes pop{
-    from{transform:scale(.85);}
-    to{transform:scale(1.15);}
-}
-
-@keyframes bounce{
-    0%,100%{transform:translateY(0);}
-    50%{transform:translateY(-18px);}
-}
-
-@keyframes shake{
-    0%,100%{transform:rotate(0);}
-    25%{transform:rotate(-8deg);}
-    75%{transform:rotate(8deg);}
-}
-
-@keyframes spin{
-    to{transform:rotate(360deg);}
-}
-
-@keyframes float{
-    0%,100%{transform:translateY(0);}
-    50%{transform:translateY(-15px);}
-}
-
-@keyframes pulse{
-    50%{transform:scale(1.25);}
-}
-
-@keyframes wiggle{
-    0%,100%{transform:rotate(0);}
-    25%{transform:rotate(-10deg);}
-    75%{transform:rotate(10deg);}
-}
-
-@keyframes zoom{
-    from{transform:scale(.8);}
-    to{transform:scale(1.2);}
-}
-
-@keyframes heart{
-    0%,100%{transform:scale(1);}
-    50%{transform:scale(1.25);}
-}
-
-/* =========================
-   TEXTAREA
-========================= */
 
 textarea{
-    width:100%;
-    min-height:140px;
-
-    margin:20px 0;
-
-    padding:17px;
-
-    resize:vertical;
-
-    border-radius:17px;
-
-    border:1px solid rgba(255,255,255,.15);
-
-    outline:none;
-
-    color:#fff;
-
-    font-family:"Quicksand",sans-serif;
-    font-size:15px;
-
-    background:rgba(0,0,0,.2);
+  width:100%;
+  height:130px;
+  padding:15px;
+  border-radius:15px;
+  border:1px solid #444;
+  background:#11111c;
+  color:white;
+  font-size:16px;
+  resize:none;
 }
 
-textarea::placeholder{
-    color:rgba(255,255,255,.5);
+.reaction{
+  font-size:70px;
+  animation:reaction .8s ease;
 }
-
-textarea:focus{
-    border-color:#ff91bd;
-    box-shadow:0 0 25px rgba(255,120,180,.12);
-}
-
-/* =========================
-   TWISTS
-========================= */
 
 .twist{
-    background:
-        radial-gradient(circle at 50% 30%,rgba(255,100,180,.14),transparent 35%),
-        linear-gradient(135deg,#0a0719,#18102c);
+  font-size:65px;
+  animation:pop .8s ease;
 }
 
-/* =========================
-   CRASH
-========================= */
-
-.crash{
-    background:
-        radial-gradient(circle,#ff1744 0%,transparent 25%),
-        #050509;
-}
-
-.crash h1{
-    color:#ff5478;
-
-    text-shadow:
-        0 0 10px #ff1744,
-        0 0 35px rgba(255,0,60,.5);
-
-    animation:glitch .35s infinite;
-}
-
-@keyframes glitch{
-    0%,100%{
-        transform:translate(0);
-    }
-
-    25%{
-        transform:translate(-2px,2px);
-    }
-
-    50%{
-        transform:translate(2px,-2px);
-    }
-
-    75%{
-        transform:translate(-1px,-1px);
-    }
-}
-
-.countdown{
-    font-family:"Playfair Display",serif;
-    font-size:55px;
-    margin:15px 0;
-}
-
-/* =========================
-   PRESENT
-========================= */
-
-.gift{
-    font-size:100px;
-    display:block;
-
-    animation:giftBounce 1.5s ease-in-out infinite;
-}
-
-@keyframes giftBounce{
-    0%,100%{
-        transform:translateY(0) rotate(0);
-    }
-
-    50%{
-        transform:translateY(-12px) rotate(3deg);
-    }
-}
-
-/* =========================
-   BIRTHDAY
-========================= */
-
-.birthday{
-    background:
-        radial-gradient(circle at 50% 35%,rgba(255,130,190,.2),transparent 35%),
-        radial-gradient(circle at 20% 70%,rgba(100,120,255,.18),transparent 35%),
-        linear-gradient(135deg,#090719,#1a1030,#090719);
+.count{
+  font-size:90px;
+  animation:count .8s ease;
 }
 
 .birthday h1{
-    color:#ffd6e7;
-
-    text-shadow:
-        0 0 20px rgba(255,160,210,.45);
+  font-size:48px;
+  animation:birthday 1s ease;
 }
 
-.party{
-    font-size:70px;
-
-    animation:party 1.2s ease-in-out infinite alternate;
+.photo{
+  width:190px;
+  height:190px;
+  border-radius:50%;
+  object-fit:cover;
+  border:5px solid white;
+  animation:photo 1.2s ease;
+  margin-bottom:20px;
 }
 
-@keyframes party{
-    from{transform:scale(.9) rotate(-4deg);}
-    to{transform:scale(1.1) rotate(4deg);}
+.card{
+  background:#12121f;
+  padding:25px;
+  border-radius:22px;
+  border:1px solid #29293b;
 }
 
-/* =========================
-   FLOATING DECORATION
-========================= */
-
-.decor{
-    position:absolute;
-    inset:0;
-
-    pointer-events:none;
-
-    overflow:hidden;
+.float{
+  position:fixed;
+  pointer-events:none;
+  animation:float 4s linear forwards;
+  font-size:25px;
 }
 
-.decor span{
-    position:absolute;
-
-    opacity:.35;
-
-    animation:decorFloat linear infinite;
+@keyframes fade{
+  from{opacity:0;transform:translateY(20px)}
+  to{opacity:1;transform:translateY(0)}
 }
-
-.decor span:nth-child(1){
-    left:8%;
-    top:20%;
-    animation-duration:7s;
+@keyframes reaction{
+  0%{transform:scale(.2) rotate(-15deg);opacity:0}
+  70%{transform:scale(1.2) rotate(8deg)}
+  100%{transform:scale(1)}
 }
-
-.decor span:nth-child(2){
-    left:82%;
-    top:30%;
-    animation-duration:9s;
+@keyframes pop{
+  0%{transform:scale(.2);opacity:0}
+  70%{transform:scale(1.25)}
+  100%{transform:scale(1)}
 }
-
-.decor span:nth-child(3){
-    left:18%;
-    top:75%;
-    animation-duration:8s;
+@keyframes count{
+  0%{transform:scale(2);opacity:0}
+  100%{transform:scale(1);opacity:1}
 }
-
-.decor span:nth-child(4){
-    left:75%;
-    top:80%;
-    animation-duration:10s;
+@keyframes birthday{
+  0%{transform:scale(.2) rotate(-10deg)}
+  70%{transform:scale(1.15) rotate(5deg)}
+  100%{transform:scale(1)}
 }
-
-@keyframes decorFloat{
-    0%{
-        transform:translateY(20px) rotate(0);
-    }
-
-    50%{
-        transform:translateY(-30px) rotate(20deg);
-    }
-
-    100%{
-        transform:translateY(20px) rotate(0);
-    }
+@keyframes photo{
+  from{transform:scale(.3) rotate(-10deg);opacity:0}
+  to{transform:scale(1) rotate(0);opacity:1}
 }
-
-/* =========================
-   MEMORY PLACEHOLDER
-========================= */
-
-.memory-grid{
-    display:grid;
-
-    grid-template-columns:repeat(3,1fr);
-
-    gap:12px;
-
-    margin:25px 0;
+@keyframes float{
+  from{transform:translateY(100vh) rotate(0);opacity:1}
+  to{transform:translateY(-120px) rotate(360deg);opacity:0}
 }
-
-.memory{
-    min-height:110px;
-
-    border-radius:18px;
-
-    display:flex;
-
-    align-items:center;
-    justify-content:center;
-
-    font-size:35px;
-
-    background:rgba(255,255,255,.06);
-
-    border:1px solid rgba(255,255,255,.08);
-}
-
-@media(max-width:500px){
-    .memory-grid{
-        grid-template-columns:1fr 1fr;
-    }
-}
-
-/* =========================
-   MUSIC
-========================= */
-
-.music-button{
-    font-size:40px;
-    margin:20px;
-}
-
-.music-status{
-    opacity:0;
-
-    max-height:0;
-
-    overflow:hidden;
-
-    transition:.4s ease;
-}
-
-#musicPlaying:target{
-    opacity:1;
-    max-height:100px;
-}
-
-/* =========================
-   FINAL
-========================= */
-
-#final{
-    align-items:flex-start;
-
-    padding-top:35px;
-    padding-bottom:70px;
-}
-
-.final-box{
-    text-align:left;
-}
-
-.final-box h1,
-.final-box .center{
-    text-align:center;
-}
-
-.final-message{
-    white-space:pre-line;
-
-    font-size:16px;
-
-    line-height:1.85;
-
-    color:rgba(255,255,255,.9);
-}
-
-.signature{
-    margin-top:25px;
-
-    text-align:center;
-
-    color:#ffb4d0;
-
-    font-weight:700;
-}
-
-/* =========================
-   MOBILE
-========================= */
-
-@media(max-width:600px){
-
-    .screen{
-        padding:16px;
-    }
-
-    .box{
-        padding:30px 20px;
-
-        border-radius:23px;
-    }
-
-    .moon{
-        width:90px;
-        height:90px;
-    }
-
-    .moon::after{
-        width:90px;
-        height:90px;
-    }
-
-    h1{
-        font-size:38px;
-    }
-
-    h2{
-        font-size:29px;
-    }
-
-    .emoji{
-        font-size:58px;
-    }
-
-    .gift{
-        font-size:80px;
-    }
-
-    .party{
-        font-size:58px;
-    }
-}
-
 </style>
 </head>
 
 <body>
 
-<!-- =====================================================
-     DECORATION
-===================================================== -->
+<!-- INTRO -->
+<section id="intro" class="screen active">
+<div class="box">
+<h1>🌙</h1>
+<h2>I made something for you.</h2>
+<p>But there's one rule...<br>
+You have to go through the whole thing 👀</p>
+<button onclick="start()">Start the surprise →</button>
+</div>
+</section>
 
-<div class="decor">
-    <span>✦</span>
-    <span>✧</span>
-    <span>♡</span>
-    <span>✦</span>
+<!-- QUESTIONS -->
+<section id="question" class="screen">
+<div class="box">
+<h2 id="q"></h2>
+<div id="answers"></div>
+</div>
+</section>
+
+<!-- REACTION -->
+<section id="reactionScreen" class="screen">
+<div class="box">
+<div id="reactionEmoji" class="reaction"></div>
+<h2 id="reactionText"></h2>
+<button onclick="nextQuestion()">Continue →</button>
+</div>
+</section>
+
+<!-- TWIST -->
+<section id="twist" class="screen">
+<div class="box">
+<div class="twist">👀</div>
+<h2 id="twistText"></h2>
+<button onclick="continueTwist()">Wait... what? →</button>
+</div>
+</section>
+
+<!-- CRASH COUNTDOWN -->
+<section id="crashCount" class="screen">
+<div class="box">
+<h1>💀</h1>
+<div id="crashNumber" class="count">3</div>
+</div>
+</section>
+
+<!-- FAKE CRASH -->
+<section id="crash" class="screen">
+<div class="box">
+<h1>💥 SYSTEM CRASHED 💀</h1>
+<p>Well... there goes your birthday present. 😭</p>
+<h2>Wait...</h2>
+<p>Did you actually believe that? 👀</p>
+<button onclick="showPresent()">Continue → 🎁</button>
+</div>
+</section>
+
+<!-- PRESENT -->
+<section id="present" class="screen">
+<div class="box">
+<h1 id="presentEmoji">🎁</h1>
+<h2 id="presentText">Are you ready for your present?</h2>
+<button onclick="presentNext()">YES ❤️</button>
+</div>
+</section>
+
+<!-- FINAL COUNTDOWN -->
+<section id="finalCount" class="screen">
+<div class="box">
+<div id="finalNumber" class="count">3</div>
+</div>
+</section>
+
+<!-- BIRTHDAY -->
+<section id="birthday" class="screen birthday">
+<div class="box">
+<img src="rafia.jpg" class="photo" alt="Birthday photo">
+
+<p>Today is your day ✨</p>
+<h1>🎉 HAPPY BIRTHDAY RAFIA 🎉</h1>
+<p>You finally made it through. 😭❤️</p>
+<p>And yes... this time the gift is real. 😂🎁</p>
+
+<button onclick="memories()">A few memories →</button>
+</div>
+</section>
+
+<!-- MEMORIES -->
+<section id="memories" class="screen">
+<div class="box">
+<h1>📸 A few memories...</h1>
+
+<div class="card">
+<p>Some moments are too good to forget. ❤️</p>
+<p>More memories coming soon...</p>
 </div>
 
-
-<!-- =====================================================
-     OPENING
-===================================================== -->
-
-<section class="screen" id="opening">
-
-    <div class="box">
-
-        <div class="moon"></div>
-
-        <p class="small">A little something I made for you...</p>
-
-        <h1>I made something for you.</h1>
-
-        <p>
-            But there's one rule...
-            <br>
-            You have to go through the whole thing. 👀
-        </p>
-
-        <br>
-
-        <a class="btn" href="#q1">
-            Start the surprise ✨
-        </a>
-
-    </div>
-
+<button onclick="music()">Continue →</button>
+</div>
 </section>
 
+<!-- MUSIC -->
+<section id="music" class="screen">
+<div class="box">
+<h1>🎵</h1>
+<h2>A little something for you</h2>
+<p>Press the button when you're ready.</p>
 
-<!-- =====================================================
-     QUESTION 1
-===================================================== -->
-
-<section class="screen" id="q1">
-
-    <div class="box">
-
-        <div class="question-number">Question 01 / 09</div>
-
-        <h2>Do you know how special you actually are to me?</h2>
-
-        <div class="answers">
-
-            <a class="btn" href="#q1r1">
-                Obviously 😌
-            </a>
-
-            <a class="btn" href="#q1r2">
-                Maybe? 👀
-            </a>
-
-            <a class="btn" href="#q1r3">
-                I don't think so...
-            </a>
-
-        </div>
-
-    </div>
-
+<button onclick="playMusic()">🎵 Play something for you</button>
+<button onclick="finalMessage()">Skip →</button>
+</div>
 </section>
 
+<!-- FINAL -->
+<section id="final" class="screen">
+<div class="box">
+<h2>Rafia,</h2>
 
-<!-- Q1 REACTIONS -->
+<p>
+Honestly, I still don't know how someone who is this far away
+managed to become such an important part of my life. 😭
+</p>
 
-<section class="screen" id="q1r1">
-    <div class="box pop">
-        <span class="emoji">😎</span>
-        <h2>OHH, look who's confident today. 😎❤️</h2>
-        <a class="btn" href="#q2">Continue →</a>
-    </div>
+<p>
+You've somehow managed to make random days better,
+make boring conversations interesting,
+tolerate my nonsense,
+and somehow still haven't blocked me...
+which honestly deserves an award. 💀
+</p>
+
+<p>
+But jokes aside, I'm genuinely really glad I met you.
+</p>
+
+<p>
+I hope this new year of your life brings you happiness,
+good memories, peace, success,
+and all the little things you've been wishing for.
+</p>
+
+<p>
+Keep smiling, keep being yourself,
+and please don't become too mature
+because I still need someone to annoy. 😭
+</p>
+
+<h2>Happy Birthday, Rafia. ❤️</h2>
+
+<p>
+I hope you liked this little surprise.
+</p>
+
+<h2>You were worth all the effort. 🫶</h2>
+
+<p>
+— From someone who is probably never going to stop annoying you 😂
+</p>
+
+<br>
+
+<p>Made specially for Rafia ♡</p>
+<p>September 2026</p>
+
+<button onclick="location.reload()">Replay the surprise ↻</button>
+</div>
 </section>
 
-<section class="screen" id="q1r2">
-    <div class="box bounce">
-        <span class="emoji">👀</span>
-        <h2>Hmm... still unsure? I might have to convince you. 👀</h2>
-        <a class="btn" href="#q2">Continue →</a>
-    </div>
-</section>
+<script>
+
+const questions = [
+
+{
+q:"Do you know how special you actually are to me?",
+a:[
+["Obviously 😌","OHH, look who's confident today. 😎❤️","😎"],
+["Maybe? 👀","Hmm... still unsure? I might have to convince you. 👀","👀"],
+["I don't think so...","Then clearly I haven't told you enough yet. ❤️","🥺"]
+]
+},
+
+{
+q:"What's one thing about our friendship that you secretly love the most?",
+a:[
+["Our random conversations","Those random conversations really are something else. 😂","💬"],
+["Our stupid jokes 😭","Our humor is actually questionable. 😭😂","😂"],
+["The fact that we can talk about anything","Okay... that's actually really sweet. 🫶","🫶"],
+["Honestly... everything","Okayyy, don't make me emotional now. 😭❤️","🥹"]
+]
+},
+
+{
+q:"Do you realize how many random days you've made better just by being there?",
+a:[
+["Yes 😌","Look at you taking credit already. 😭😂","😌"],
+["Maybe","Maybe? I'll accept that... for now. 👀","🤨"],
+["No way 😭","YES WAY. Don't argue with me on this one. 😭❤️","😤"]
+]
+},
+
+{
+q:"If distance didn't exist for one day, what would we do first?",
+a:[
+["Go somewhere random","Of course we'd have absolutely no plan. 😂","🗺️"],
+["Talk for hours","And somehow we'd still have more to talk about. 😭","💬"],
+["Take a million pictures 📸","A million? You'd probably make it two million. 😂📸","📸"],
+["Cause absolute chaos 💀","I KNEW you'd choose this one. 💀😂","💀"]
+]
+},
+
+{
+q:"Who is more likely to start a completely unnecessary argument?",
+a:[
+["Me 😭","At least you're honest. I'll give you that. 😂","👏"],
+["You 💀","EXCUSE ME?? 😭 You really clicked that with confidence?","😤"],
+["Both of us","Finally... some honesty. 💀😂","🤝"],
+["Depends on the day...","Smart answer. You're learning how to survive us. 😭","🧠"]
+]
+},
+
+{
+q:"What's one memory or conversation between us that you'd never want to forget?",
+text:true
+},
+
+{
+q:"Do you know that I'm genuinely glad I met you?",
+a:[
+["Yes ❤️","Good. Because I really mean it. ❤️","❤️"],
+["Now I do","Then mission accomplished. 🫶","✨"],
+["You better be 😭","Trust me, I am. 😭","😤"]
+]
+},
+
+{
+q:"If we could meet right now, where would we go?",
+a:[
+["Somewhere peaceful 🌙","Honestly... that sounds kinda perfect. 🌙✨","🌙"],
+["Somewhere completely random 😂","No destination. Just vibes. 😂","🚗"],
+["Food first. Obviously.","FINALLY, someone with priorities. 😂🍕","🍕"],
+["Wherever, as long as we're together","Okay... you didn't have to make that this cute. 🥹❤️","🥹"]
+]
+},
+
+{
+q:"What's one thing you want this new year of your life to bring you?",
+text:true
+}
+
+];
+
+let current=0;
+let selectedReaction="";
+let presentStep=0;
+
+function hideAll(){
+document.querySelectorAll(".screen").forEach(x=>x.classList.remove("active"));
+}
 
-<section class="screen" id="q1r3">
-    <div class="box heart">
-        <span class="emoji">🥺</span>
-        <h2>Then clearly I haven't told you enough yet. ❤️</h2>
-        <a class="btn" href="#q2">Continue →</a>
-    </div>
-</section>
+function show(id){
+hideAll();
+document.getElementById(id).classList.add("active");
+}
 
+function start(){
+showQuestion();
+}
 
-<!-- =====================================================
-     QUESTION 2
-===================================================== -->
+function showQuestion(){
 
-<section class="screen" id="q2">
+let data=questions[current];
 
-    <div class="box">
+show("question");
 
-        <div class="question-number">Question 02 / 09</div>
+document.getElementById("q").innerText=data.q;
 
-        <h2>What's one thing about our friendship that you secretly love the most?</h2>
+let box=document.getElementById("answers");
+box.innerHTML="";
 
-        <div class="answers">
+if(data.text){
 
-            <a class="btn" href="#q2r1">
-                Our random conversations
-            </a>
+let area=document.createElement("textarea");
+area.placeholder=current===5?
+"Write your answer here...":
+"Make a wish...";
 
-            <a class="btn" href="#q2r2">
-                Our stupid jokes 😭
-            </a>
+box.appendChild(area);
 
-            <a class="btn" href="#q2r3">
-                The fact that we can talk about anything
-            </a>
+let btn=document.createElement("button");
+btn.innerText=current===5?
+"Keep this memory →":
+"Save my wish ✨";
 
-            <a class="btn" href="#q2r4">
-                Honestly... everything
-            </a>
+btn.onclick=()=>{
+selectedReaction=current===5?
+"Okay... that one is getting saved in the imaginary memory vault. ❤️":
+"Wish saved. Now let's hope this year is extra kind to you. ✨❤️";
 
-        </div>
+showReactionScreen(current===5?"🔐":"🌟");
+};
 
-    </div>
+box.appendChild(btn);
 
-</section>
+}else{
 
+data.a.forEach(option=>{
 
-<section class="screen" id="q2r1">
-    <div class="box float">
-        <span class="emoji">💬</span>
-        <h2>Those random conversations really are something else. 😂</h2>
-        <a class="btn" href="#q3">Continue →</a>
-    </div>
-</section>
+let btn=document.createElement("button");
+btn.className="answer";
+btn.innerText=option[0];
 
-<section class="screen" id="q2r2">
-    <div class="box shake">
-        <span class="emoji">😂</span>
-        <h2>Our humor is actually questionable. 😭😂</h2>
-        <a class="btn" href="#q3">Continue →</a>
-    </div>
-</section>
+btn.onclick=()=>{
+selectedReaction=option[1];
+showReactionScreen(option[2]);
+};
 
-<section class="screen" id="q2r3">
-    <div class="box heart">
-        <span class="emoji">🫶</span>
-        <h2>Okay... that's actually really sweet. 🫶</h2>
-        <a class="btn" href="#q3">Continue →</a>
-    </div>
-</section>
+box.appendChild(btn);
 
-<section class="screen" id="q2r4">
-    <div class="box pulse">
-        <span class="emoji">🥹</span>
-        <h2>Okayyy, don't make me emotional now. 😭❤️</h2>
-        <a class="btn" href="#q3">Continue →</a>
-    </div>
-</section>
+});
 
+}
 
-<!-- =====================================================
-     QUESTION 3
-===================================================== -->
+}
 
-<section class="screen" id="q3">
+function showReactionScreen(emoji){
 
-    <div class="box">
+show("reactionScreen");
 
-        <div class="question-number">Question 03 / 09</div>
+document.getElementById("reactionEmoji").innerText=emoji;
+document.getElementById("reactionText").innerText=selectedReaction;
 
-        <h2>
-            Do you realize how many random days you've made better just by being there?
-        </h2>
+createEffects(emoji);
 
-        <div class="answers">
+}
 
-            <a class="btn" href="#q3r1">
-                Yes 😌
-            </a>
+function nextQuestion(){
 
-            <a class="btn" href="#q3r2">
-                Maybe
-            </a>
+current++;
 
-            <a class="btn" href="#q3r3">
-                No way 😭
-            </a>
+if(current===3){
+showTwist("Wait... you're actually taking this seriously? 👀");
+return;
+}
 
-        </div>
+if(current===6){
+showTwist("Okay... we're getting closer to the actual surprise. 😭");
+return;
+}
 
-    </div>
+if(current>=questions.length){
+startCrash();
+return;
+}
 
-</section>
+showQuestion();
 
+}
 
-<section class="screen" id="q3r1">
-    <div class="box pop">
-        <span class="emoji">😌</span>
-        <h2>Look at you taking credit already. 😭😂</h2>
-        <a class="btn" href="#twist3">Continue →</a>
-    </div>
-</section>
+function showTwist(text){
 
-<section class="screen" id="q3r2">
-    <div class="box zoom">
-        <span class="emoji">🤨</span>
-        <h2>Maybe? I'll accept that... for now. 👀</h2>
-        <a class="btn" href="#twist3">Continue →</a>
-    </div>
-</section>
+document.getElementById("twistText").innerText=text;
+show("twist");
 
-<section class="screen" id="q3r3">
-    <div class="box shake">
-        <span class="emoji">😤</span>
-        <h2>YES WAY. Don't argue with me on this one. 😭❤️</h2>
-        <a class="btn" href="#twist3">Continue →</a>
-    </div>
-</section>
+}
 
+function continueTwist(){
+showQuestion();
+}
 
-<!-- =====================================================
-     TWIST 3
-===================================================== -->
+function startCrash(){
 
-<section class="screen twist" id="twist3">
+show("crashCount");
 
-    <div class="box">
+let n=3;
 
-        <span class="emoji">👀</span>
+document.getElementById("crashNumber").innerText=n;
 
-        <h2>Wait... you're actually taking this seriously?</h2>
+let timer=setInterval(()=>{
 
-        <p>
-            I wasn't expecting you to get this far. 😭
-        </p>
+n--;
 
-        <a class="btn" href="#twist3b">
-            Wait... what? →
-        </a>
+if(n>0){
+document.getElementById("crashNumber").innerText=n;
+}else{
+clearInterval(timer);
+show("crash");
+}
 
-    </div>
+},900);
 
-</section>
+}
 
+function showPresent(){
 
-<section class="screen twist" id="twist3b">
+presentStep=0;
+show("present");
 
-    <div class="box">
+}
 
-        <span class="emoji">😭</span>
+function presentNext(){
 
-        <h2>Okay, okay...</h2>
+presentStep++;
 
-        <p>
-            Let's keep going.
-            <br>
-            There's still more. 👀
-        </p>
+if(presentStep===1){
 
-        <a class="btn" href="#q4">
-            Continue →
-        </a>
+document.getElementById("presentText").innerText="Really? 👀";
 
-    </div>
+}
 
-</section>
+else if(presentStep===2){
 
+document.getElementById("presentText").innerText="Are you sure? 😭";
 
-<!-- =====================================================
-     QUESTION 4
-===================================================== -->
+}
 
-<section class="screen" id="q4">
+else if(presentStep===3){
 
-    <div class="box">
+document.getElementById("presentText").innerText="Okay... let's continue. 🎁";
 
-        <div class="question-number">Question 04 / 09</div>
+}
 
-        <h2>
-            If distance didn't exist for one day, what would we do first?
-        </h2>
+else{
 
-        <div class="answers">
+startFinalCountdown();
 
-            <a class="btn" href="#q4r1">
-                Go somewhere random
-            </a>
+}
 
-            <a class="btn" href="#q4r2">
-                Talk for hours
-            </a>
+}
 
-            <a class="btn" href="#q4r3">
-                Take a million pictures 📸
-            </a>
+function startFinalCountdown(){
 
-            <a class="btn" href="#q4r4">
-                Cause absolute chaos 💀
-            </a>
+show("finalCount");
 
-        </div>
+let n=3;
 
-    </div>
+document.getElementById("finalNumber").innerText=n;
 
-</section>
+let timer=setInterval(()=>{
 
+n--;
 
-<section class="screen" id="q4r1">
-    <div class="box float">
-        <span class="emoji">🗺️</span>
-        <h2>Of course we'd have absolutely no plan. 😂</h2>
-        <a class="btn" href="#q5">Continue →</a>
-    </div>
-</section>
+if(n>0){
 
-<section class="screen" id="q4r2">
-    <div class="box pulse">
-        <span class="emoji">💬</span>
-        <h2>And somehow we'd still have more to talk about. 😭</h2>
-        <a class="btn" href="#q5">Continue →</a>
-    </div>
-</section>
+document.getElementById("finalNumber").innerText=n;
 
-<section class="screen" id="q4r3">
-    <div class="box zoom">
-        <span class="emoji">📸</span>
-        <h2>A million? You'd probably make it two million. 😂📸</h2>
-        <a class="btn" href="#q5">Continue →</a>
-    </div>
-</section>
+}else{
 
-<section class="screen" id="q4r4">
-    <div class="box shake">
-        <span class="emoji">💀</span>
-        <h2>I KNEW you'd choose this one. 💀😂</h2>
-        <a class="btn" href="#q5">Continue →</a>
-    </div>
-</section>
+clearInterval(timer);
+showBirthday();
+createBirthdayEffects();
 
+}
 
-<!-- =====================================================
-     QUESTION 5
-===================================================== -->
+},900);
 
-<section class="screen" id="q5">
+}
 
-    <div class="box">
+function showBirthday(){
+show("birthday");
+}
 
-        <div class="question-number">Question 05 / 09</div>
+function memories(){
+show("memories");
+}
 
-        <h2>
-            Who is more likely to start a completely unnecessary argument?
-        </h2>
+function music(){
+show("music");
+}
 
-        <div class="answers">
+function playMusic(){
 
-            <a class="btn" href="#q5r1">
-                Me 😭
-            </a>
+alert("Add your royalty-free music file as music.mp3 to the repository, then connect it here.");
 
-            <a class="btn" href="#q5r2">
-                You 💀
-            </a>
+finalMessage();
 
-            <a class="btn" href="#q5r3">
-                Both of us
-            </a>
+}
 
-            <a class="btn" href="#q5r4">
-                Depends on the day...
-        
+function finalMessage(){
+show("final");
+createEffects("❤️");
+}
+
+function createEffects(emoji){
+
+for(let i=0;i<12;i++){
+
+let e=document.createElement("div");
+
+e.className="float";
+e.innerText=emoji;
+
+e.style.left=Math.random()*100+"vw";
+e.style.animationDuration=(2+Math.random()*3)+"s";
+
+document.body.appendChild(e);
+
+setTimeout(()=>e.remove(),5000);
+
+}
+
+}
+
+function createBirthdayEffects(){
+
+let emojis=["🎉","❤️","💖","💕","🫶","✨","🌙","⭐","🌟"];
+
+for(let i=0;i<35;i++){
+
+let e=document.createElement("div");
+
+e.className="float";
+e.innerText=emojis[Math.floor(Math.random()*emojis.length)];
+
+e.style.left=Math.random()*100+"vw";
+e.style.animationDuration=(2+Math.random()*4)+"s";
+
+document.body.appendChild(e);
+
+setTimeout(()=>e.remove(),6000);
+
+}
+
+}
+
+</script>
+
+</body>
+   </html>
